@@ -1,0 +1,139 @@
+/* -------------------------------------------------
+   LandingPage.css
+   ------------------------------------------------- */
+
+/* ========== COLOR VARIABLES ========== */
+:root {
+  --accent-green: #79c79f;
+  --accent-green-hover: #69b88f;
+  --text-color: #333;
+  --bg-color: #fff;
+}
+
+/* ========== BASE / RESET ========== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.lp-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ========== HEADER / NAVBAR ========== */
+.lp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.lp-logo {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: var(--accent-green);
+}
+
+.lp-nav a {
+  margin-right: 1.5rem;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.lp-nav a:hover {
+  color: var(--accent-green);
+}
+
+.lp-actions button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Contact Sales Button (Outline) */
+.lp-outline-btn {
+  background-color: transparent;
+  border: 2px solid var(--accent-green);
+  color: var(--accent-green);
+  transition: background-color 0.2s ease;
+}
+
+.lp-outline-btn:hover {
+  background-color: var(--accent-green);
+  color: #fff;
+}
+
+/* Login Button (Solid) */
+.lp-login-btn {
+  background-color: var(--accent-green);
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.lp-login-btn:hover {
+  background-color: var(--accent-green-hover);
+}
+
+/* ========== HERO SECTION ========== */
+.lp-hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.lp-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.lp-hero p {
+  font-size: 1.25rem;
+  max-width: 650px;
+  margin-bottom: 2.5rem;
+  line-height: 1.75;
+  color: #555;
+}
+
+.lp-hero-actions {
+  margin-bottom: 3rem;
+}
+
+.lp-primary-btn {
+  padding: 1rem 2rem;
+  background-color: var(--accent-green);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.lp-primary-btn:hover {
+  background-color: var(--accent-green-hover);
+}
+
+/* ========== FOOTER ========== */
+.lp-footer {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid #eee;
+  font-size: 0.9rem;
+  color: #777;
+}
