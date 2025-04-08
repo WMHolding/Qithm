@@ -13,7 +13,7 @@ function LandingPage() {
         <h1>From idea to fitness transformation, fast.</h1>
         <p>
           FitComp is your complete platform for discovering new challenges, 
-          connecting with a supportive community, and reaching your goals.
+          connecting with a supportive community, and reaching your goals!!!!
         </p>
         <div className="lp-hero-actions">
           <button className="lp-primary-btn">Get Started Free</button>
