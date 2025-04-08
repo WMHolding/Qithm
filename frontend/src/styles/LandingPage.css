@@ -1,27 +1,13 @@
-/* -------------------------------------------------
-   LandingPage.css
-   ------------------------------------------------- */
-
-/* ========== COLOR VARIABLES ========== */
-:root {
-  --accent-green: #79c79f;
-  --accent-green-hover: #69b88f;
-  --text-color: #333;
-  --bg-color: #fff;
-}
-
-/* ========== BASE / RESET ========== */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
 
 .lp-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 /* ========== HEADER / NAVBAR ========== */
@@ -31,6 +17,8 @@ body {
   align-items: center;
   padding: 1rem 2rem;
   border-bottom: 1px solid #eee;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .lp-logo {
@@ -93,12 +81,15 @@ body {
   justify-content: center;
   padding: 6rem 2rem;
   text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .lp-hero h1 {
   font-size: 3rem;
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  width: 100%;
 }
 
 .lp-hero p {
@@ -107,10 +98,12 @@ body {
   margin-bottom: 2.5rem;
   line-height: 1.75;
   color: #555;
+  width: 100%;
 }
 
 .lp-hero-actions {
   margin-bottom: 3rem;
+  width: 100%;
 }
 
 .lp-primary-btn {
@@ -136,4 +129,6 @@ body {
   border-top: 1px solid #eee;
   font-size: 0.9rem;
   color: #777;
+  width: 100%;
+  box-sizing: border-box;
 }

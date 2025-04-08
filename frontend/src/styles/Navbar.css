@@ -1,0 +1,63 @@
+/* Navbar.css */
+
+/* Basic Navbar Container */
+.navbar {
+    display: flex;
+    justify-content: center; /* Centers nav-links horizontally */
+    align-items: center;
+    padding: 1.5rem 2.5rem;
+    background-color: #fff;
+    width: 100%;
+    position: relative; /* Allows absolute positioning for .nav-left */
+}
+
+/* Left, Center, Right sections */
+.nav-left,
+.nav-center,
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Position the logo container at the top left */
+.nav-left {
+    position: absolute;
+    top: 1 rem;  /* Adjust as needed for vertical placement */
+    left: 5rem; /* Adjust as needed for horizontal placement */
+}
+  
+/* Logo styling */
+.nav-logo {
+    color: #79c79f;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+  
+/* Nav Links container remains centered */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0 auto; /* Centers the nav-links */
+    padding: 0;
+}
+  
+.nav-item a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+    padding-bottom: 0.25rem;
+}
+  
+/* Active Link Underline */
+.nav-item.active a {
+    border-bottom: 2px solid #79c79f;
+}
+  
+/* Avatar */
+.nav-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
