@@ -12,7 +12,7 @@ function LandingPage() {
       <section className="lp-hero">
         <h1>From idea to fitness transformation, fast.</h1>
         <p>
-          FitComp is your complete platform for discovering new challenges, 
+          Qitham is your complete platform for discovering new challenges, 
           connecting with a supportive community, and reaching your goals!!!!
         </p>
         <div className="lp-hero-actions">
@@ -22,7 +22,7 @@ function LandingPage() {
 
       {/* Footer */}
       <footer className="lp-footer">
-        <p>© {new Date().getFullYear()} FitComp. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Qitham. All rights reserved.</p>
       </footer>
     </div>
   );
