@@ -1,0 +1,71 @@
+/* Main container for the entire section */
+.weekly-progress {
+    width: 100%;
+    /* Full width of parent */
+    padding: 2rem 0;
+    /* Vertical spacing */
+}
+
+/* Container for both progress charts */
+.charts-container {
+    display: flex;
+    /* Flex layout for side-by-side charts */
+    gap: 200px;
+    /* Space between charts */
+    justify-content: center;
+    /* Center horizontally */
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
+}
+
+/* Individual chart container */
+.progress-chart {
+    display: flex;
+    /* Flex layout */
+    flex-direction: column;
+    /* Stack elements vertically */
+    align-items: center;
+    /* Center horizontally */
+}
+
+/* SVG wrapper - crucial for positioning */
+.chart-container {
+    position: relative;
+    /* Needed for absolute positioning */
+    width: fit-content;
+    /* Match SVG width */
+}
+
+/* SVG element styling */
+.chart-container svg {
+    display: block;
+    /* Remove default inline spacing */
+}
+
+/* Chart title styling */
+.chart-label h3 {
+    color: #d3d1d1;
+    /* Dark gray color */
+    font-size: 1.2rem;
+    /* Title size */
+    margin: 0;
+    /* Remove default margin */
+}
+
+/* ------------------ */
+/* SVG Text Elements - Applies to <text> elements in JSX */
+/* ------------------ */
+.percentage {
+    font-size: 1.2rem;
+    font-weight: bold;
+    fill: #fff;
+    text-shadow: 0 2px 4px rgba(193, 193, 193, 0.211);
+    /* Text readability enhancement */
+}
+
+.progress-text {
+    font-size: 0.9rem;
+    fill: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    /* Subtle shadow */
+}
