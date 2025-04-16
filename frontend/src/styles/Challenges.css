@@ -1,0 +1,573 @@
+/* ===============================================
+   1) Global Variables & Base
+   =============================================== */
+   :root {
+    /* Colors - Enhanced Palette */
+    --primary-50: #e8f5e9;
+    --primary-100: #c8e6c9;
+    --primary-300: #81c784;
+    --primary-500: #4caf50;  /* Main primary */
+    --primary-600: #43a047;  /* Primary dark */
+    --primary-700: #388e3c;  /* Even darker */
+    
+    /* Neutral colors */
+    --neutral-50: #f9fafb;   /* Background */
+    --neutral-100: #f3f4f6;  /* Light background */
+    --neutral-200: #e5e7eb;  /* Borders */
+    --neutral-300: #d1d5db;  /* Light text */
+    --neutral-500: #666666;  /* Secondary text */
+    --neutral-700: #374151;  /* Main text */
+    --neutral-900: #111827;  /* Headings */
+    
+    /* System colors */
+    --success: #4caf50;
+    --warning: #ff9800;
+    --error: #f44336;
+    --info: #2196f3;
+    
+    /* Typography */
+    --font-base: 16px;    /* Increased from 14px for better readability */
+    --font-sm: 14px;      /* Increased from 12px */
+    --font-md: 16px;      /* Increased from 14px */
+    --font-lg: 20px;      /* Increased from 16px */
+    --font-xl: 24px;      /* New size for headings */
+    
+    /* Font weights */
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    
+    /* Font family */
+    --font-family: 'Inter', 'SF Pro Display', Arial, sans-serif;
+  
+    /* Improved spacing scale */
+    --space-2xs: 4px;
+    --space-xs: 8px;
+    --space-sm: 12px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    
+    /* Layout */
+    --radius: 8px;
+    --radius-sm: 6px;
+    --radius-lg: 12px;
+    --radius-pill: 9999px;
+    --header-h: 70px;
+    
+    /* Grid system */
+    --container-max: 1200px;
+    --content-padding: var(--space-lg);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  *,
+  *::before,
+  *::after { 
+    box-sizing: border-box; 
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--neutral-50);
+    color: var(--neutral-700);
+    font-family: var(--font-family);
+    font-size: var(--font-base);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    margin-top: 0;
+    color: var(--neutral-900);
+    font-weight: var(--font-semibold);
+  }
+  
+  /* ===============================================
+     2) Header Navigation
+     =============================================== */
+  .header-nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-h);
+    padding: 0 var(--space-lg);
+    background: white;
+    box-shadow: var(--shadow-sm);
+    z-index: 100;
+    border-bottom: 1px solid var(--neutral-200);
+  }
+  
+  .header-nav .logo {
+    font-size: var(--font-lg);
+    font-weight: var(--font-bold);
+    color: var(--primary-500);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .header-nav .nav-links {
+    display: flex;
+    gap: var(--space-xl);
+    margin-left: var(--space-xl);
+    font-size: var(--font-md);
+  }
+  
+  .header-nav .nav-links a {
+    color: var(--neutral-500);
+    text-decoration: none;
+    padding: var(--space-xs) var(--space-sm);
+    font-weight: var(--font-medium);
+    position: relative;
+    transition: color 0.2s ease;
+  }
+  
+  .header-nav .nav-links a.active {
+    color: var(--primary-500);
+    font-weight: var(--font-semibold);
+  }
+  
+  .header-nav .nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-500);
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+  }
+  
+  .header-nav .nav-links a.active::after,
+  .header-nav .nav-links a:hover::after {
+    transform: scaleX(1);
+  }
+  
+  .header-nav .user-area { 
+    display: flex; 
+    align-items: center; 
+    gap: var(--space-md); 
+  }
+  
+  .header-nav .login-btn {
+    padding: var(--space-xs) var(--space-md);
+    background: var(--primary-500);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-sm);
+    font-weight: var(--font-medium);
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .header-nav .login-btn:hover { 
+    background: var(--primary-600); 
+  }
+  
+  .header-nav .avatar {
+    width: 36px; 
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  /* ===============================================
+     3) Full-Width Page Container
+     =============================================== */
+  .challenges-page {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: var(--space-xl) var(--content-padding);
+  }
+  
+  /* ===============================================
+     4) Search Bar
+     =============================================== */
+  .challenges-search {
+    max-width: 400px;
+    margin-bottom: var(--space-lg);
+    position: relative;
+  }
+  
+  .challenges-search input {
+    width: 100%;
+    padding: var(--space-sm) var(--space-lg);
+    padding-left: calc(var(--space-lg) + 16px); /* Space for search icon */
+    border-radius: var(--radius);
+    border: 1px solid var(--neutral-300);
+    font-size: var(--font-md);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background: white;
+  }
+  
+  .challenges-search input:focus {
+    outline: none;
+    border-color: var(--primary-300);
+    box-shadow: 0 0 0 3px var(--primary-100);
+  }
+  
+  .challenges-search::before {
+    content: "🔍";
+    position: absolute;
+    left: var(--space-sm);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--neutral-500);
+    pointer-events: none;
+  }
+  
+  /* ===============================================
+     5) Category Filters
+     =============================================== */
+  .challenges-category-filters {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+    flex-wrap: wrap;
+  }
+  
+  .challenges-category-filters button {
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-pill);
+    font-size: var(--font-sm);
+    font-weight: var(--font-medium);
+    border: 1px solid var(--neutral-300);
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .challenges-category-filters button.active {
+    background: var(--primary-500);
+    color: white;
+    border-color: var(--primary-500);
+  }
+  
+  .challenges-category-filters button:hover:not(.active) {
+    background: var(--neutral-100);
+    border-color: var(--neutral-400);
+  }
+  
+  /* ===============================================
+     6) Featured Challenges
+     =============================================== */
+  .featured-challenges h2 {
+    font-size: var(--font-xl);
+    margin-bottom: var(--space-md);
+    font-weight: var(--font-bold);
+    color: var(--neutral-900);
+  }
+  
+  .challenge-cards {
+    display: flex;
+    gap: var(--space-md);
+    overflow-x: auto;
+    padding-bottom: var(--space-md);
+    scrollbar-width: thin;
+    scrollbar-color: var(--neutral-300) var(--neutral-100);
+  }
+  
+  .challenge-cards::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .challenge-cards::-webkit-scrollbar-track {
+    background: var(--neutral-100);
+    border-radius: var(--radius);
+  }
+  
+  .challenge-cards::-webkit-scrollbar-thumb {
+    background-color: var(--neutral-300);
+    border-radius: var(--radius);
+  }
+  
+  .challenge-card {
+    flex: 0 0 300px;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid var(--neutral-200);
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: calc(var(--index, 0) * 0.1s);
+    opacity: 0;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .challenge-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .challenge-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+  }
+  
+  .challenge-info {
+    padding: var(--space-md) var(--space-md);
+  }
+  
+  .challenge-info h3 {
+    margin: 0 0 var(--space-xs);
+    font-size: var(--font-md);
+    font-weight: var(--font-semibold);
+    color: var(--neutral-900);
+  }
+  
+  .challenge-info p {
+    margin: var(--space-2xs) 0;
+    font-size: var(--font-sm);
+    color: var(--neutral-500);
+  }
+  
+  .challenge-meta {
+    display: flex;
+    align-items: center;
+    margin-top: var(--space-xs);
+    color: var(--neutral-500);
+    font-size: var(--font-sm);
+  }
+  
+  .challenge-meta .dot-separator {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--neutral-300);
+    margin: 0 var(--space-xs);
+  }
+  
+  /* ===============================================
+     7) Active Challenges
+     =============================================== */
+  .active-challenges h2 {
+    font-size: var(--font-xl);
+    margin: var(--space-lg) 0 var(--space-md);
+    font-weight: var(--font-bold);
+    color: var(--neutral-900);
+  }
+  
+  .active-challenges .challenge-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .active-challenges .challenge-card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-md);
+    font-size: var(--font-sm);
+    flex: 1;
+    display: flex;
+    flex-direction: column; 
+  }
+  
+  .active-challenges .challenge-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .active-challenges .challenge-thumbnail {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  
+  .active-challenges .challenge-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .active-challenges .challenge-details {
+    flex: 1;
+  }
+  
+  .active-challenges .challenge-card h3 {
+    margin: 0 0 var(--space-xs);
+    font-size: var(--font-md);
+    font-weight: var(--font-semibold);
+  }
+  
+  .active-challenges .challenge-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--space-sm);
+    align-items: center;
+  }
+  
+  .active-challenges .challenge-rank {
+    background: var(--primary-50);
+    color: var(--primary-700);
+    padding: var(--space-2xs) var(--space-xs);
+    border-radius: var(--radius-sm);
+    font-weight: var(--font-medium);
+  }
+  
+  .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--neutral-200);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+    margin: var(--space-sm) 0;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-500), var(--primary-700));
+    border-radius: var(--radius-pill);
+    transition: width 0.5s ease;
+    animation: progressGrow 1s ease forwards;
+  }
+  
+  @keyframes progressGrow {
+    from { width: 0; }
+    to { width: var(--progress-width, 50%); }
+  }
+  
+  /* ===============================================
+     8) Button Styles
+     =============================================== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-sm);
+    font-weight: var(--font-medium);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .btn-primary {
+    background: var(--primary-500);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background: var(--primary-600);
+  }
+  
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--neutral-300);
+    color: var(--neutral-700);
+  }
+  
+  .btn-outline:hover {
+    border-color: var(--neutral-500);
+    background: var(--neutral-100);
+  }
+  
+  .btn-sm {
+    padding: var(--space-2xs) var(--space-xs);
+    font-size: var(--font-sm);
+  }
+  
+  .btn-lg {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--font-md);
+  }
+  
+  /* ===============================================
+     9) Responsive Tweaks
+     =============================================== */
+  @media (max-width: 768px) {
+    .header-nav {
+      padding: 0 var(--space-md);
+    }
+    
+    .header-nav .nav-links {
+      gap: var(--space-md);
+    }
+    
+    .challenge-card {
+      flex: 0 0 240px;
+    }
+    
+    .challenge-card img {
+      height: 140px;
+    }
+    
+    .featured-challenges {
+      margin-bottom: var(--space-xl);
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .header-nav .nav-links {
+      gap: var(--space-sm);
+    }
+    
+    .header-nav .logo img {
+      width: 120px;
+    }
+    
+    .challenges-search {
+      max-width: 100%;
+    }
+    
+    .challenge-card {
+      flex: 0 0 200px;
+    }
+    
+    .challenge-card img {
+      height: 120px;
+    }
+    
+    .challenges-page {
+      padding: var(--space-lg) var(--space-md);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .challenge-card {
+      flex: 0 0 160px;
+    }
+    
+    .challenge-card img {
+      height: 100px;
+    }
+    
+    .header-nav .nav-links {
+      display: none; /* Consider implementing a mobile menu */
+    }
+    
+    .challenges-category-filters button {
+      font-size: var(--font-sm);
+      padding: var(--space-2xs) var(--space-sm);
+    }
+  }

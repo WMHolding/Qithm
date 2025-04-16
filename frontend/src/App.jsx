@@ -1,15 +1,13 @@
-// src/App.jsx
-import React, { useState } from "react";
-import LoginPage from "./pages/LoginPage";
-import SignInPage from "./pages/SignInPage";
+// App.jsx (example usage)
+
+import React from "react";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
-  const [showLogin, setShowLogin] = useState(true); // true = login, false = sign‑in
-
-  return showLogin ? (
-    <LoginPage goToSignIn={() => setShowLogin(false)} />
-  ) : (
-    <SignInPage goToLogin={() => setShowLogin(true)} />
+  return (
+    <div>
+      <LandingPage />
+    </div>
   );
 }
 
