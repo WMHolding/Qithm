@@ -1,0 +1,252 @@
+/* ===============================================
+   1) Global Variables & Base
+   =============================================== */
+   :root {
+    /* Colors */
+    --bg: #f9fafb;
+    --white: #fff;
+    --primary: #4caf50;
+    --primary-dark: #43a047;
+    --text-main: #333;
+    --text-sec: #666;
+    --border: #e0e0e0;
+    --shadow: rgba(0, 0, 0, 0.05);
+  
+    /* Typography */
+    --font-base: 14px;    /* base size */
+    --font-sm: 12px;      
+    --font-md: 14px;      
+    --font-lg: 16px;      
+  
+    /* Spacing */
+    --space-xxs: 2px;
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 24px;
+  
+    --radius: 4px;
+    --header-h: 60px;
+  }
+  
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text-main);
+    font-family: Arial, sans-serif;
+    font-size: var(--font-md);
+    line-height: 1.4;
+  }
+  
+  /* ===============================================
+     2) Header Navigation
+     =============================================== */
+  .header-nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-h);
+    padding: 0 var(--space-lg);
+    background: var(--white);
+    box-shadow: 0 1px 3px var(--shadow);
+    z-index: 100;
+  }
+  
+  .header-nav .logo {
+    font-size: var(--font-lg);
+    font-weight: bold;
+    color: var(--primary);
+  }
+  
+  .header-nav .nav-links {
+    display: flex;
+    gap: var(--space-lg);
+    margin-left: var(--space-md);
+    font-size: var(--font-md);
+  }
+  
+  .header-nav .nav-links a {
+    color: var(--text-sec);
+    text-decoration: none;
+    padding: var(--space-xs) 0;
+    transition: color .2s;
+  }
+  
+  .header-nav .nav-links a:hover,
+  .header-nav .nav-links a.active {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+  
+  .header-nav .nav-links a.active::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -2px;
+    width: 100%; height: 2px;
+    background: var(--primary);
+  }
+  
+  .header-nav .user-area { display: flex; align-items: center; gap: var(--space-md); }
+  .header-nav .login-btn {
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    font-size: var(--font-sm);
+    cursor: pointer;
+    transition: background .2s;
+  }
+  .header-nav .login-btn:hover { background: var(--primary-dark); }
+  .header-nav .avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* ===============================================
+     3) Full‑Width Page Container
+     =============================================== */
+  .challenges-page {
+    width: 100vw;
+    padding: var(--space-lg) var(--space-lg);
+  }
+  
+  /* ===============================================
+     4) Search Bar
+     =============================================== */
+  .challenges-search {
+    max-width: 360px;
+    margin-bottom: var(--space-lg);
+  }
+  .challenges-search input {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-md);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-top: 20 px;
+  }
+  
+  /* ===============================================
+     5) Category Filters
+     =============================================== */
+  .challenges-category-filters {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+    font-size: var(--font-sm);
+  }
+  .challenges-category-filters button {
+    padding: var(--space-xs) var(--space-md);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background .2s, color .2s;
+  }
+  .challenges-category-filters button.active {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+  }
+  
+  /* ===============================================
+     6) Featured Challenges
+     =============================================== */
+  .featured-challenges h2 {
+    font-size: var(--font-lg);
+    margin-bottom: var(--space-md);
+  }
+  .challenge-cards {
+    display: flex;
+    gap: var(--space-md);
+    overflow-x: auto;
+    padding-bottom: var(--space-sm);
+  }
+  .challenge-card {
+    flex: 0 0 260px;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px var(--shadow);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .challenge-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px var(--shadow);
+  }
+  .challenge-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+  }
+  .challenge-info {
+    padding: var(--space-sm) var(--space-md);
+  }
+  .challenge-info h3 {
+    margin: 0 0 var(--space-xs);
+    font-size: var(--font-md);
+  }
+  .challenge-info p {
+    margin: var(--space-xxs) 0;
+    font-size: var(--font-sm);
+    color: var(--text-sec);
+  }
+  
+  /* ===============================================
+     7) Active Challenges
+     =============================================== */
+  .active-challenges h2 {
+    font-size: var(--font-lg);
+    margin: var(--space-lg) 0 var(--space-md);
+  }
+  .active-challenges .challenge-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .active-challenges .challenge-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px var(--shadow);
+    padding: var(--space-md);
+    font-size: var(--font-sm);
+  }
+  .active-challenges .challenge-card h3 {
+    margin: 0 0 var(--space-xs);
+    font-size: var(--font-md);
+  }
+  .progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #eee;
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: var(--space-xs) 0;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--primary);
+    transition: width .3s;
+  }
+  
+  /* ===============================================
+     8) Responsive Tweaks
+     =============================================== */
+  @media (max-width: 768px) {
+    .challenge-card { flex: 0 0 200px; }
+  }
+  @media (max-width: 480px) {
+    .challenge-card { flex: 0 0 140px; }
+  }
+  

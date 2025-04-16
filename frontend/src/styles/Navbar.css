@@ -1,63 +1,79 @@
-/* Navbar.css */
-
-/* Basic Navbar Container */
+/* Navbar Container */
 .navbar {
     display: flex;
-    justify-content: center; /* Centers nav-links horizontally */
+    justify-content: center;
     align-items: center;
     padding: 1.5rem 2.5rem;
     background-color: #fff;
     width: 100%;
-    position: relative; /* Allows absolute positioning for .nav-left */
-}
-
-/* Left, Center, Right sections */
-.nav-left,
-.nav-center,
-.nav-right {
-    display: flex;
-    align-items: center;
-}
-
-/* Position the logo container at the top left */
-.nav-left {
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Left Section (Logo) */
+  .nav-left {
     position: absolute;
-    top: 1 rem;  /* Adjust as needed for vertical placement */
-    left: 5rem; /* Adjust as needed for horizontal placement */
-}
+    top: 50%;
+    left: 2.5rem;
+    transform: translateY(-50%);
+  }
   
-/* Logo styling */
-.nav-logo {
+  .nav-logo {
     color: #79c79f;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: bold;
-}
+  }
   
-/* Nav Links container remains centered */
-.nav-links {
+  /* Center Section */
+  .nav-center {
+    width: 100%;
+  }
+  
+  .nav-links {
     list-style: none;
     display: flex;
+    justify-content: center;
     gap: 2rem;
-    margin: 0 auto; /* Centers the nav-links */
+    margin: 0;
     padding: 0;
-}
+    position: relative;
+  }
   
-.nav-item a {
+  .nav-item a {
     text-decoration: none;
     color: #333;
     font-size: 1rem;
     font-weight: 500;
-    padding-bottom: 0.25rem;
-}
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s;
+  }
   
-/* Active Link Underline */
-.nav-item.active a {
-    border-bottom: 2px solid #79c79f;
-}
+  /* Active link color */
+  .nav-item.active a {
+    color: #79c79f;
+  }
   
-/* Avatar */
-.nav-avatar {
+  /* Hover effect */
+  .nav-item a:hover {
+    color: #79c79f;
+  }
+  
+  /* Animated Indicator */
+  .nav-indicator {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: #79c79f;
+    transition: all 0.3s ease;
+    left: 0;
+    width: 0;
+  }
+  
+  /* Optional Avatar (if you choose to use it) */
+  .nav-avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-}
+  }
+  
