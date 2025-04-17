@@ -72,6 +72,8 @@ body {
 /* ========== BUTTONS ========== */
 .login-button,
 .create-button {
+  display: inline-block; /* يخليه ياخذ مساحة مثل الزر */
+  text-decoration: none; /* يشيل الخط السفلي */
   width: 100%;
   padding: 0.75rem 1rem;
   font-size: 1rem;

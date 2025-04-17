@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import "../styles/LoginPage.css";
 import Qithm from "../assets/Qithm.png";
+import { useNavigate } from "react-router-dom";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function SignInPage({ goToLogin }) {
+function SignInPage() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -96,7 +99,8 @@ function SignInPage({ goToLogin }) {
         </button>
 
         <p className="login-text">Already have an account?</p>
-        <button className="create-button" onClick={goToLogin}>
+
+        <button className="create-button" onClick={() => navigate("/")}>
           Login
         </button>
       </div>

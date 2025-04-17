@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "../styles/LoginPage.css";
 import Qithm from "../assets/Qithm.png";
+import { useNavigate } from "react-router-dom";
 
-function LoginPage({ goToSignIn /* من App.jsx */ }) {
+function LoginPage() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -62,7 +64,11 @@ function LoginPage({ goToSignIn /* من App.jsx */ }) {
         </button>
 
         <p className="login-text">Don't have an account?</p>
-        <button className="create-button" onClick={goToSignIn}>
+
+        <button
+          className="create-button"
+          onClick={() => navigate("/SignInPage")}
+        >
           Create Account
         </button>
       </div>
