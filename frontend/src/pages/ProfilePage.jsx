@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/ProfilePage.css";
-import ProfilePic from "./moon.jpg"; 
+import ProfilePic from "../assets/istockphoto-1309328823-612x612.jpg"; 
 
 function ProfilePage() {
   const [profile, setProfile] = useState({
