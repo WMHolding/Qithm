@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./ProfilePage.css";
+import "../styles/ProfilePage.css";
 import ProfilePic from "./moon.jpg"; 
 
 function ProfilePage() {
