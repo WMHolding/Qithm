@@ -10,6 +10,7 @@ import Leaderboard from "./pages/LeaderBoard";
 import ProfilePage from "./pages/ProfilePage";
 import Dashboard from "./pages/Dashboard";
 import ChampionshipsPage from "./pages/Championships";
+import AdminDashboard from "./pages/Admin";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/championships" element={<ChampionshipsPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
       </BrowserRouter>
     </div>
