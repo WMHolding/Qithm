@@ -1,12 +1,19 @@
-import React from 'react';
-import LandingPage from './pages/LandingPage';
-import ProgresWeeklyProgressSection from './pages/WeeklyProgress';
+// App.jsx (example usage)
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import React from "react";
+import LoginPage from "./pages/LoginPage";
+import SignInPage from "./pages/SignInPage";
 
 function App() {
   return (
     <div>
-      {/* <LandingPage /> */}
-      <ProgresWeeklyProgressSection />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/SignInPage" element={<SignInPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

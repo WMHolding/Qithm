@@ -1,0 +1,125 @@
+/* ========== RESET & BASE STYLES ========== */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #f5f5f5;
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+/* ========== OUTER WRAPPER ========== */
+.login-page {
+  /* يشيل الصفحة كلها ويخليها بالنص */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* ما نحتاج padding هنا */
+}
+
+/* ========== WHITE CARD BOX ========== */
+.login-card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+
+  /* العرض الكلي */
+  width: 100%;
+  max-width: 450px;
+
+  /* نخلي محتويات الكارد بالعامود وبالنص */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* ========== LOGO IMAGE ========== */
+.login-logo {
+  width: 70%; /* نسبة من عرض الكارد */
+  max-width: 300px; /* عشان ما تكبر مره */
+  height: auto;
+  margin-bottom: 1.5rem;
+  display: block;
+  object-fit: contain; /* يضمن إن الصورة ما تنضغط بشكل غريب */
+}
+
+/* ========== TITLE ========== */
+.login-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #000;
+  text-align: center;
+}
+
+/* ========== INPUTS ========== */
+.login-input {
+  width: 100%; /* ياخذ كل عرض الكارد (max 450px) */
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.3rem;
+  box-sizing: border-box;
+  background-color: white;
+  color: #000;
+}
+
+/* ========== BUTTONS ========== */
+.login-button,
+.create-button {
+  display: inline-block; /* يخليه ياخذ مساحة مثل الزر */
+  text-decoration: none; /* يشيل الخط السفلي */
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover,
+.create-button:hover {
+  background-color: #45a045;
+}
+
+/* ========== TEXT ========== */
+.login-text {
+  margin: 0.5rem 0 1rem;
+  color: #000;
+  font-size: 0.9rem;
+  text-align: center;
+}
+/* أضف أسفل ملف LoginPage.css */
+.error-msg {
+  color: #d32f2f;
+  font-size: 0.8rem;
+  margin: 0 0 0.4rem 0;
+  width: 85%;
+  max-width: 290px;
+  text-align: left;
+}
+
+/* ========== RESPONSIVE (SMALL SCREENS) ========== */
+@media (max-width: 600px) {
+  .login-title {
+    font-size: 1.7rem;
+  }
+  .login-logo {
+    width: 80%;
+    max-width: 250px;
+  }
+  .login-input,
+  .login-button,
+  .create-button {
+    font-size: 0.95rem;
+  }
+}
