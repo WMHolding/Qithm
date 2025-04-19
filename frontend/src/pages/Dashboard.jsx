@@ -25,6 +25,7 @@ const Dashboard = () => {
     return (
         <>
             <div className="dashboard-container">
+                <Navbar />
                 {/* Left Sidebar */}
                 <div className="left-sidebar">
                     <LiftSideDash />
