@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/LeaderBoard.css"; 
-
+import Navbar from "./Navbar";
 const leaderboardData = [
     { name: "Ahmed Ali", steps: 12345, streak: 6,pfp:  "../assets/smiling-teacher-sitting-desk-university-260nw-265830800.jpg.webp"},
     { name: "Sara Khaled", steps: 11200, streak: 5, pfp:  "./moon.jpg" },
@@ -11,6 +11,8 @@ const leaderboardData = [
   
   function Leaderboard() {
     return (
+      <div>
+        <Navbar/>
       <div className="leaderboard">
         <h2>🏆 Weekly Leaderboard</h2>
   
@@ -32,7 +34,7 @@ const leaderboardData = [
             <span className="col-streak">{user.streak}🔥</span>
           </div>
         ))}
-      </div>
+      </div></div>
     );
   }
   
