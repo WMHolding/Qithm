@@ -10,13 +10,12 @@ import Leaderboard from "./pages/LeaderBoard";
 import ProfilePage from "./pages/ProfilePage";
 import Dashboard from "./pages/Dashboard";
 import ChampionshipsPage from "./pages/Championships";
-import LiftSideDash from "./pages/LiftSideDash";
 
 
 function App() {
   return (
     <div>
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/signin" element={<SignInPage />} />
@@ -29,8 +28,7 @@ function App() {
           <Route path="/championships" element={<ChampionshipsPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
-      </BrowserRouter> */}
-      <LiftSideDash />
+      </BrowserRouter>
     </div>
   );
 }

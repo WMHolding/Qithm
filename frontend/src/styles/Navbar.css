@@ -1,283 +1,257 @@
-<<<<<<< HEAD
 /* ------------------------------
    1) Navbar Container
    ------------------------------ */
-   .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 70px;
-    padding: 0 40px;
-    background: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
-  
-  /* ------------------------------
-     2) Logo (Left) 
-     ------------------------------ */
-  .nav-left {
-    flex: 0 0 100px;
-    margin-right: 0;
-  }
-  
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
-  
-  .nav-logo-img {
-    height: 35px;
-    width: auto;
-    object-fit: contain;
-  }
-  
-  /* ------------------------------
-     3) Nav Links (Center)
-     ------------------------------ */
-  .nav-center {
-    flex: 2;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    position: relative;
-    justify-content: center;
-=======
-/* Navbar.css updated */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  height: 70px;
-  background-color: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0 40px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
 
+/* ------------------------------
+     2) Logo (Left) 
+     ------------------------------ */
 .nav-left {
-  display: flex;
-  align-items: center;
+  flex: 0 0 100px;
+  margin-right: 0;
 }
 
 .nav-logo {
-  color: #4caf50;
-  font-size: 24px;
-  font-weight: 700;
+  display: flex;
+  align-items: center;
   text-decoration: none;
 }
 
+.nav-logo-img {
+  height: 35px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ------------------------------
+     3) Nav Links (Center)
+     ------------------------------ */
 .nav-center {
-  flex: 1;
+  flex: 2;
   display: flex;
   justify-content: center;
 }
 
 .nav-links {
   display: flex;
+  gap: 2rem;
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
   position: relative;
-}
+  justify-content: center;
 
-.nav-item {
-  margin: 0 15px;
-  position: relative;
-}
+  /* Navbar.css updated */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 70px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
 
-.nav-item a {
-  display: inline-block;
-  padding: 10px 0;
-  color: #666666;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
-}
+  .nav-left {
+    display: flex;
+    align-items: center;
+  }
 
-.nav-item.active a {
-  color: #4caf50;
-}
+  .nav-logo {
+    color: #4caf50;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+  }
 
-.nav-indicator {
-  position: absolute;
-  bottom: -2px;
-  height: 3px;
-  background-color: #4caf50;
-  transition: left 0.3s, width 0.3s;
-  border-radius: 2px;
-}
+  .nav-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
 
-.nav-right {
-  display: flex;
-  align-items: center;
-}
-
-.join-now-btn {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.join-now-btn:hover {
-  background-color: #388e3c;
-}
-
-.nav-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 768px) {
   .nav-links {
-    gap: 10px;
->>>>>>> abdullah/dashboard
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
   }
 
   .nav-item {
-    margin: 0 10px;
+    margin: 0 15px;
+    position: relative;
   }
-}
 
-@media (max-width: 576px) {
-  .nav-center {
-    display: none;
+  .nav-item a {
+    display: inline-block;
+    padding: 10px 0;
+    color: #666666;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
   }
-<<<<<<< HEAD
-  
-  .nav-item a:hover,
+
   .nav-item.active a {
-    color: #79c79f;
+    color: #4caf50;
   }
-  
-  /* Animated underline */
+
   .nav-indicator {
     position: absolute;
-    bottom: -5px;
-    left: 0;
-    height: 2px;
-    background: #79c79f;
-    transition: all 0.3s ease;
+    bottom: -2px;
+    height: 3px;
+    background-color: #4caf50;
+    transition: left 0.3s, width 0.3s;
+    border-radius: 2px;
   }
-  
-  /* ------------------------------
-     4) (Optional) Avatar (Right)
-     ------------------------------ */
+
+  .nav-profile {
+    color: #666666;
+  }
+
   .nav-right {
-    flex: 0 0 100px;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
   }
-  
-  /* Join Now button styles */
+
+  .nav-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+
   .join-now-btn {
-    display: inline-flex;       /* makes it size to content but stay inline */
+    display: flex;
     align-items: center;
-    justify-content: center;
-    white-space: nowrap;        /* never wrap the text */
-    gap: 8px;
-  
-    /* increase horizontal padding */
-    padding: 10px 24px;
-  
-    /* optional: ensure it’s at least this wide */
-    min-width: 120px;
-  
-    background-color: #10b981;
+    gap: 5px;
+    background-color: #4caf50;
     color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 500;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s;
   }
-  
-  
+
   .join-now-btn:hover {
-    background-color: #68b68e;
+    background-color: #388e3c;
   }
-  
-  .user-profile {
-    display: flex;
-    align-items: center;
-  }
-  
+
   .nav-avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid #79c79f;
-    cursor: pointer;
-    transition: transform 0.2s ease;
+    object-fit: cover;
+    border: 2px solid white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
-  
-  .nav-avatar:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 1024px) {
-    .navbar {
-      padding: 0 20px;
-    }
-    
-    .nav-links {
-      gap: 1.5rem;
-    }
-  }
-  
+
   @media (max-width: 768px) {
-    .nav-center {
-      display: none; /* Consider adding a mobile menu */
+    .nav-links {
+      gap: 10px;
     }
-    
-    .nav-right {
-      margin-left: auto;
-    }
-    
-    .join-now-btn {
-      padding: 8px 16px;
-      font-size: 0.9rem;
+
+    .nav-item {
+      margin: 0 10px;
     }
   }
-  
-  /* ------------------------------
-     5) Page Content Adjustment
+
+  @media (max-width: 576px) {
+    .nav-center {
+      display: none;
+    }
+
+    .nav-item.active a {
+      color: #79c79f;
+    }
+
+    /* Animated underline */
+    .nav-indicator {
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      height: 2px;
+      background: #79c79f;
+      transition: all 0.3s ease;
+    }
+
+    /* ------------------------------
+     4) (Optional) Avatar (Right)
      ------------------------------ */
-  /* Remove any body or container padding-top for fixed nav */
-  /* If you had padding-top:70px anywhere, remove it so content starts at top */
-  
-=======
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-left: auto;
+      /* Pushes to far right */
+    }
+
+    /* Avatar Image */
+    .nav-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-avatar:hover {
+      transform: scale(1.05);
+    }
+
+    /* Join Now Button */
+    .join-now-btn {
+      padding: 8px 20px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .join-now-btn:hover {
+      background: #388E3C;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .nav-avatar {
+        width: 32px;
+        height: 32px;
+      }
+
+      .join-now-btn {
+        padding: 6px 16px;
+        font-size: 0.9rem;
+      }
+    }
+  }
 }
->>>>>>> abdullah/dashboard

@@ -88,12 +88,7 @@ function Navbar() {
           </button>
         ) : (
           <Link to="/profile">
-
-            <img
-              src={Avatar}
-              alt="User Avatar"
-              className="nav-avatar"
-            />
+            <p className="nav-profile">Profile</p>
           </Link>
         )}
       </div>
