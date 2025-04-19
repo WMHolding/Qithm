@@ -6,7 +6,7 @@ import ChallengesPage from "./pages/Challenges";
 import ProfilePage from "./pages/ProfilePage";
 import LandingPage from "./pages/LandingPage";
 import ChatPage from "./pages/ChatPage";
-
+import Leaderboard from "./pages/LeaderBoard";
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
           <Route path="/challenges" element={<ChallengesPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/chat" element={<ChatPage />} />
+          <Route path="/leaderboard" element={<Leaderboard/>}/>
         </Routes>
       </BrowserRouter>
     </div>

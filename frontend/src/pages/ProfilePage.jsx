@@ -4,12 +4,12 @@ import ProfilePic from "../assets/istockphoto-1309328823-612x612.jpg";
 import Navbar from "./Navbar";
 function ProfilePage() {
   const [profile, setProfile] = useState({
-    name: "John Doe",
-    email: "john@example.com",
+    name: "mohammed khaled",
+    email: "mkd@example.com",
     phone: "123-456-7890",
     weight: "75kg",
     height: "180cm",
-    birthday: "1990-01-01",
+    birthday: "2003-01-01",
   });
 
   const handleChange = (e) => {
