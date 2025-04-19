@@ -45,7 +45,7 @@ const profile = {
 function LiftSideDash() {
     return (
         <div className="lift-side-dash">
-            <ProfileBox profile={profile} />;
+            <ProfileBox profile={profile} />
             <TrackProgress />
         </div>
     )

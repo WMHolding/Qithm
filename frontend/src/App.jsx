@@ -6,7 +6,6 @@ import ChallengesPage from "./pages/Challenges";
 import LandingPage from "./pages/LandingPage";
 import ChatPage from "./pages/ChatPage";
 import ChallengeCoachView from "./pages/ChallengeCoachView";
-
 import Leaderboard from "./pages/LeaderBoard";
 import ProfilePage from "./pages/ProfilePage";
 import LiftSideDash from "./pages/LiftSideDash";

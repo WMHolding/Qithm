@@ -130,6 +130,9 @@ function LoginPage() {
       // Failed login
       setMessage("Invalid username or password. Please try again or sign up.");
     }
+    // ✅ بيانات صحيحة – نفّذ ما تريد:
+    console.log("Logged in:", { username, password }); navigate("/Dashboard")
+    // ... تابع للصفحة التالية
   };
 
   return (

@@ -1,16 +1,17 @@
 /* LiftSideDash.css */
 .lift-side-dash {
-    position: fixed;
-    left: 20px;
-    top: 20px;
     width: 280px;
     height: calc(100vh - 40px);
     display: flex;
     flex-direction: column;
     padding: .5rem;
     border-radius: 16px;
+<<<<<<< HEAD
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
     display: none;
+=======
+    gap: 1rem;
+>>>>>>> abdullah/dashboard
 }
 
 .profile-box {
