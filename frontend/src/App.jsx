@@ -8,6 +8,7 @@ import LandingPage from "./pages/LandingPage";
 import ChatPage from "./pages/ChatPage";
 import ChallengeCoachView from "./pages/ChallengeCoachView";
 
+import Leaderboard from "./pages/LeaderBoard";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/coach" element={<ChallengeCoachView />} />
+          <Route path="/leaderboard" element={<Leaderboard/>}/>
         </Routes>
       </BrowserRouter>
     </div>

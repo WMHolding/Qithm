@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import "../styles/ProfilePage.css";
 import ProfilePic from "../assets/istockphoto-1309328823-612x612.jpg"; 
-
+import Navbar from "./Navbar";
 function ProfilePage() {
   const [profile, setProfile] = useState({
-    name: "John Doe",
-    email: "john@example.com",
+    name: "mohammed khaled",
+    email: "mkd@example.com",
     phone: "123-456-7890",
     weight: "75kg",
     height: "180cm",
-    birthday: "1990-01-01",
+    birthday: "2003-01-01",
   });
 
   const handleChange = (e) => {
@@ -17,18 +17,22 @@ function ProfilePage() {
   };
 
   return (
+    <div>
+        <Navbar/>
     <div className="profile-container">
       {/* Left Box */}
       <div className="profile-left">
         <img src={ProfilePic} alt="Profile" className="profile-pic" />
         <h2>{profile.name}</h2>
+        <hr/>
         <p>Email: {profile.email}</p>
+        <hr/>
         <p>Phone: {profile.phone}</p>
       </div>
 
       {/* Right Box */}
       <div className="profile-right">
-        <h2>Edit Profile</h2>
+        <h2 className="black">Edit Profile</h2>
         <form className="profile-form">
           <label>
             Name:
@@ -56,6 +60,7 @@ function ProfilePage() {
           </label>
         </form>
       </div>
+    </div>
     </div>
   );
 }

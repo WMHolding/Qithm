@@ -1,26 +1,33 @@
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .profile-container {
+  
     display: flex;
     gap: 2rem;
     padding: 2rem;
     margin: auto;
+    color: black;
   }
   
   .profile-left {
     background: #f5f5f5;
     padding: 1.5rem;
     border-radius: 12px;
-    max-width: 200px;
     height: 300px;
-    width: 100%;
+    width: 300px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
   .profile-right {
     background: #f5f5f5;
     padding: 1.5rem;
     border-radius: 12px;
-    max-width: 1000px;
+    width: 800px;
 
-    width: 100%;
+    
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
   
@@ -51,5 +58,7 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     margin-top: 0.3rem;
+    background-color: #f5f5f5;
+    color: black;
   }
   
