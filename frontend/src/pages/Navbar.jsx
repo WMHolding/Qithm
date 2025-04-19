@@ -1,6 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+<<<<<<< HEAD
+import { ArrowRight } from 'lucide-react';
+=======
+
+>>>>>>> abdullah/dashboard
 import '../styles/Navbar.css';
+import Avatar from '../assets/istockphoto-1309328823-612x612.jpg';
 
 const navItems = [
   { name: 'Dashboard', path: '/dashboard' },
@@ -41,11 +47,13 @@ function Navbar() {
     };
   }, [activeIndex]);
 
+  const isLandingPage = location.pathname === '/';
+
   return (
     <nav className="navbar">
       {/* Left Section: Logo */}
       <div className="nav-left">
-        <span className="nav-logo">FitComp</span>
+        <Link to="/" className="nav-logo">FitComp</Link>
       </div>
 
       {/* Center Section: Navigation Links */}
@@ -65,16 +73,20 @@ function Navbar() {
         </ul>
       </div>
 
-      {/* Right Section: (Optional) User Avatar */}
-      {/*
+      {/* Right Section: Conditional Content */}
       <div className="nav-right">
-        <img
-          src="https://via.placeholder.com/40"
-          alt="User Avatar"
-          className="nav-avatar"
-        />
+        {isLandingPage ? (
+          <button className="join-now-btn">
+            Join Now <ArrowRight size={16} />
+          </button>
+        ) : (
+          <img
+            src={Avatar}
+            alt="User Avatar"
+            className="nav-avatar"
+          />
+        )}
       </div>
-      */}
     </nav>
   );
 }

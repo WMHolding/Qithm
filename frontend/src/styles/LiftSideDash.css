@@ -1,0 +1,132 @@
+/* LiftSideDash.css */
+.lift-side-dash {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    width: 280px;
+    height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+    padding: .5rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+.profile-box {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.profile-box h2 {
+    margin: 0;
+    font-size: 1.rem;
+    /* Abu Al3iz text size */
+    font-weight: 600;
+    color: #2d3436;
+    /* Dark gray */
+    line-height: 1.2;
+}
+
+.profile-box p {
+    margin: 0.5rem 0 0;
+    font-size: 1.3rem;
+    /* 1633 text size */
+    font-weight: 500;
+    color: #4CAF50;
+    /* Green */
+}
+
+.track-progress {
+    background: rgb(247, 247, 248);
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.track-progress h2 {
+    font-size: 1rem;
+    color: #3b3d3d;
+    margin: 0 0 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+/* Challenge Cards */
+.challenge-card {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    /* Light gray bg */
+    border-radius: 8px;
+}
+
+.challenge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.challenge-header h3 {
+    font-size: 1.1rem;
+    /* "10K Steps Daily" size */
+    margin: 0;
+    color: #2d3436;
+    font-weight: 500;
+}
+
+.challenge-header .rank {
+    font-size: 0.9rem;
+    color: #4CAF50;
+    /* Green */
+    font-weight: 600;
+}
+
+.progress-bar {
+    height: 6px;
+    /* Exact bar thickness */
+    background: #e0e0e0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #4CAF50;
+    width: 75%;
+    /* Matches 7,500/10,000 */
+}
+
+.progress-text {
+    font-size: 0.9rem;
+    color: #636e72;
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.streak-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.streak-header h3 {
+    font-size: 1rem;
+    margin: 0;
+    color: #2d3436;
+    font-weight: 500;
+}

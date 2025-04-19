@@ -1,13 +1,19 @@
 /* Main container for the entire section */
 .weekly-progress {
     width: 100%;
-    /* Full width of parent */
     padding: 2rem 0;
-    /* Vertical spacing */
+}
+
+.weekly-progress h2 {
+    color: #3f3f3f;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
 }
 
 /* Container for both progress charts */
 .charts-container {
+    position: absolute;
+    left: 330px;
     display: flex;
     /* Flex layout for side-by-side charts */
     gap: 200px;
@@ -16,6 +22,9 @@
     /* Center horizontally */
     flex-wrap: wrap;
     /* Allow wrapping on small screens */
+    padding: 3rem 7rem;
+    background-color: #fff;
+    border-radius: 12px;
 }
 
 /* Individual chart container */
@@ -44,7 +53,7 @@
 
 /* Chart title styling */
 .chart-label h3 {
-    color: #d3d1d1;
+    color: #5a5959;
     /* Dark gray color */
     font-size: 1.2rem;
     /* Title size */
@@ -58,14 +67,14 @@
 .percentage {
     font-size: 1.2rem;
     font-weight: bold;
-    fill: #fff;
+    fill: #3f3f3f;
     text-shadow: 0 2px 4px rgba(193, 193, 193, 0.211);
     /* Text readability enhancement */
 }
 
 .progress-text {
     font-size: 0.9rem;
-    fill: #fff;
+    fill: #3f3f3f;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     /* Subtle shadow */
 }

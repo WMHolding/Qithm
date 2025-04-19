@@ -1,36 +1,18 @@
 // src/components/ActiveChallenges.js
 import React from 'react';
-
-// Sample data for user's active challenges
-const activeData = [
-  {
-    id: 1,
-    title: '10K Steps Daily',
-    progress: 7500,
-    progressGoal: 10000,
-    rank: '57/120',
-    hoursLeft: 4,
-    category: 'cardio',
-  },
-  {
-    id: 2,
-    title: 'Weekly Workout Streak',
-    progress: 4,
-    progressGoal: 7,
-    rank: '12/85',
-    hoursLeft: 3,
-    category: 'strength',
-  },
-];
+import { challengesData } from './FeaturedChallenges'; // Import the consolidated data
+import '../styles/Challenges.css';
 
 function ActiveChallenges({ searchQuery, selectedCategory }) {
-  const filteredChallenges = activeData.filter((challenge) => {
+  // Filter active (enrolled) challenges
+  const filteredChallenges = challengesData.filter((challenge) => {
     const matchesSearch = challenge.title
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
     const matchesCategory =
       selectedCategory === 'all' || challenge.category === selectedCategory;
-    return matchesSearch && matchesCategory;
+    const isEnrolled = challenge.status === 'enrolled';
+    return matchesSearch && matchesCategory && isEnrolled;
   });
 
   return (
@@ -42,19 +24,32 @@ function ActiveChallenges({ searchQuery, selectedCategory }) {
 
           return (
             <div className="challenge-card" key={challenge.id}>
+              <img 
+                src={challenge.image} 
+                alt={challenge.title} 
+                className="challenge-image"
+              />
               <div className="challenge-info">
                 <h3>{challenge.title}</h3>
-                <p>Rank: {challenge.rank}</p>
-                <p>Hours left: {challenge.hoursLeft}</p>
-                <div className="progress-bar">
-                  <div
-                    className="progress-fill"
-                    style={{ width: `${progressPercent}%` }}
-                  />
+                <div className="challenge-stats">
+                  <p>Rank: {challenge.rank}</p>
+                  <p>Hours left: {challenge.hoursLeft}</p>
                 </div>
-                <p>
-                  Progress: {challenge.progress}/{challenge.progressGoal}
-                </p>
+                <div className="challenge-progress">
+                  <div className="progress-bar">
+                    <div
+                      className="progress-fill"
+                      style={{ width: `${progressPercent}%` }}
+                    />
+                  </div>
+                  <p className="progress-text">
+                    Progress: {challenge.progress}/{challenge.progressGoal}
+                  </p>
+                </div>
+                <div className="challenge-details">
+                  <p className="description">{challenge.shortDescription}</p>
+                  <div className="category-tag">{challenge.category}</div>
+                </div>
               </div>
             </div>
           );
