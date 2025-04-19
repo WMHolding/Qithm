@@ -1,79 +1,91 @@
-/* Navbar Container */
-.navbar {
+/* ------------------------------
+   1) Navbar Container
+   ------------------------------ */
+   .navbar {
+    position: sticky;
+    top: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 1.5rem 2.5rem;
-    background-color: #fff;
-    width: 100%;
-    position: relative;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    height: 70px;
+    padding: 0 2.5rem;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
   }
   
-  /* Left Section (Logo) */
+  /* ------------------------------
+     2) Logo (Left) 
+     ------------------------------ */
   .nav-left {
-    position: absolute;
-    top: 50%;
-    left: 2.5rem;
-    transform: translateY(-50%);
+    margin-right: auto;
   }
   
   .nav-logo {
-    color: #79c79f;
     font-size: 1.75rem;
     font-weight: bold;
+    color: #79c79f;
+    text-decoration: none;
   }
   
-  /* Center Section */
+  /* ------------------------------
+     3) Nav Links (Center)
+     ------------------------------ */
   .nav-center {
-    width: 100%;
+    margin: 0 auto;
   }
   
   .nav-links {
-    list-style: none;
     display: flex;
-    justify-content: center;
     gap: 2rem;
-    margin: 0;
+    list-style: none;
     padding: 0;
+    margin: 0;
     position: relative;
   }
   
   .nav-item a {
-    text-decoration: none;
-    color: #333;
+    position: relative;
     font-size: 1rem;
     font-weight: 500;
+    color: #333;
+    text-decoration: none;
     padding: 0.5rem 0;
-    position: relative;
     transition: color 0.3s;
   }
   
-  /* Active link color */
+  .nav-item a:hover,
   .nav-item.active a {
     color: #79c79f;
   }
   
-  /* Hover effect */
-  .nav-item a:hover {
-    color: #79c79f;
-  }
-  
-  /* Animated Indicator */
+  /* Animated underline */
   .nav-indicator {
     position: absolute;
     bottom: 0;
-    height: 2px;
-    background-color: #79c79f;
-    transition: all 0.3s ease;
     left: 0;
+    height: 2px;
+    background: #79c79f;
     width: 0;
+    transition: all 0.3s ease;
   }
   
-  /* Optional Avatar (if you choose to use it) */
+  /* ------------------------------
+     4) (Optional) Avatar (Right)
+     ------------------------------ */
+  .nav-right {
+    margin-left: auto;
+  }
+  
   .nav-avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
   }
+  
+  /* ------------------------------
+     5) Page Content Adjustment
+     ------------------------------ */
+  /* Remove any body or container padding-top for fixed nav */
+  /* If you had padding-top:70px anywhere, remove it so content starts at top */
   

@@ -1,134 +1,325 @@
+/* Base styles */
+:root {
+  --primary-color: #10b981;
+  --primary-hover: #059669;
+  --primary-light: #d1fae5;
+  --accent-color: #10b981;
+  --text-color: #333333;
+  --text-light: #6b7280;
+  --white: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+  --animation-speed: 0.3s;
+}
 
-.lp-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  min-height: 100vh;
+/* Reset to ensure proper layout */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* ========== HEADER / NAVBAR ========== */
-.lp-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  border-bottom: 1px solid #eee;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
   width: 100%;
-  box-sizing: border-box;
+  scroll-behavior: smooth; /* Enable smooth scrolling */
 }
 
-.lp-logo {
-  font-size: 1.75rem;
-  font-weight: bold;
-  color: var(--accent-green);
-}
-
-.lp-nav a {
-  margin-right: 1.5rem;
-  text-decoration: none;
+/* General Layout */
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 90%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
   color: var(--text-color);
-  font-weight: 500;
+  background: linear-gradient(to bottom, #ffffff, #f9fafb);
+  /* Remove padding-top to allow navbar to be properly positioned */
+  position: relative; /* Important for absolute positioning children */
+}
+
+.section-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 24px 60px; /* Increased top padding to account for navbar */
+  background: linear-gradient(135deg, #ecfdf5, #ccfbf1);
+  text-align: center;
+  width: 100%; /* Ensure full width */
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 12px;
+  background-color: var(--primary-light);
+  color: var(--primary-hover);
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.hero-heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -0.025em;
+}
+
+.accent-text {
+  color: var(--primary-color);
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+/* Buttons */
+.primary-button, .secondary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
   font-size: 1rem;
-}
-
-.lp-nav a:hover {
-  color: var(--accent-green);
-}
-
-.lp-actions button {
-  margin-left: 1rem;
-  padding: 0.5rem 1rem;
-  font-weight: 500;
-  border: none;
-  border-radius: 4px;
+  font-weight: 600;
   cursor: pointer;
+  border-radius: var(--border-radius);
+  transition: background-color var(--animation-speed) ease, transform var(--animation-speed) ease;
 }
 
-/* Contact Sales Button (Outline) */
-.lp-outline-btn {
+.primary-button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  box-shadow: var(--shadow);
+}
+
+.primary-button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.button-icon {
+  margin-left: 8px;
+  transition: transform var(--animation-speed) ease;
+}
+
+.primary-button:hover .button-icon {
+  transform: translateX(4px);
+}
+
+.secondary-button {
   background-color: transparent;
-  border: 2px solid var(--accent-green);
-  color: var(--accent-green);
-  transition: background-color 0.2s ease;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
 }
 
-.lp-outline-btn:hover {
-  background-color: var(--accent-green);
-  color: #fff;
+.secondary-button:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
 }
 
-/* Login Button (Solid) */
-.lp-login-btn {
-  background-color: var(--accent-green);
-  color: #fff;
-  transition: background-color 0.2s ease;
+/* Features Section */
+.features-section {
+  padding: 60px 24px;
+  background-color: var(--white);
+  width: 100%; /* Ensure full width */
 }
 
-.lp-login-btn:hover {
-  background-color: var(--accent-green-hover);
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
 }
 
-/* ========== HERO SECTION ========== */
-.lp-hero {
-  flex: 1;
+.feature-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: transform var(--animation-speed) ease, box-shadow var(--animation-speed) ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-light);
+  border-radius: 50%;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.feature-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-color);
+}
+
+.feature-description {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 60px 24px;
+  background-color: var(--primary-color);
+  text-align: center;
+  width: 100%; /* Ensure full width */
+}
+
+.cta-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--white);
+}
+
+.cta-description {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 24px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-button {
+  padding: 12px 24px;
+  background-color: var(--white);
+  color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--animation-speed) ease, transform var(--animation-speed) ease;
+  box-shadow: var(--shadow);
+}
+
+.cta-button:hover {
+  background-color: #f9fafb;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Footer */
+.footer {
+  padding: 36px 24px;
+  background-color: #111827;
+  color: var(--white);
+  width: 100%; /* Ensure full width */
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6rem 2rem;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box;
 }
 
-.lp-hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-  width: 100%;
+.footer-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
 }
 
-.lp-hero p {
-  font-size: 1.25rem;
-  max-width: 650px;
-  margin-bottom: 2.5rem;
-  line-height: 1.75;
-  color: #555;
-  width: 100%;
+.footer-copyright {
+  font-size: 0.8rem;
+  color: #9ca3af;
 }
 
-.lp-hero-actions {
-  margin-bottom: 3rem;
-  width: 100%;
+/* Responsive Styles */
+@media (min-width: 768px) {
+  .hero-heading {
+    font-size: 3rem;
+  }
+  
+  .hero-actions {
+    flex-direction: row;
+    gap: 24px;
+  }
+  
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .footer-logo {
+    margin-bottom: 0;
+  }
 }
 
-.lp-primary-btn {
-  padding: 1rem 2rem;
-  background-color: var(--accent-green);
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 1.125rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.lp-primary-btn:hover {
-  background-color: var(--accent-green-hover);
-}
-
-/* ========== FOOTER ========== */
-.lp-footer {
-  text-align: center;
-  padding: 1rem;
-  border-top: 1px solid #eee;
-  font-size: 0.9rem;
-  color: #777;
-  width: 100%;
-  box-sizing: border-box;
+@media (max-width: 768px) {
+  .hero-heading {
+    font-size: 2rem;
+  }
+  
+  .section-heading {
+    font-size: 1.75rem;
+  }
+  
+  .cta-heading {
+    font-size: 1.75rem;
+  }
 }
