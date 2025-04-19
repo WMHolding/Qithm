@@ -4,13 +4,15 @@
   height: 100vh;
 }
 
-.profile-container {
   
+.profile-container {
     display: flex;
     gap: 2rem;
     padding: 2rem;
     margin: auto;
     color: black;
+    margin-top: 80px; /* Push content below navbar */
+
   }
   
   .profile-left {
@@ -19,6 +21,9 @@
     border-radius: 12px;
     height: 300px;
     width: 300px;
+    max-width: 200px;
+    height: 300px;
+    width: 100%;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
   .profile-right {
@@ -28,6 +33,9 @@
     width: 800px;
 
     
+    max-width: 1000px;
+
+    width: 100%;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
   

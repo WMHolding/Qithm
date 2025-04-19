@@ -14,6 +14,13 @@ import ActiveChallenges from "./pages/ActiveChallenges";
 import Dashboard from "./pages/Dashboard";
 import WeeklyProgress from "./pages/WeeklyProgress";
 import Navbar from "./pages/Navbar";
+import ChallengesPage from "./pages/Challenges";
+import LandingPage from "./pages/LandingPage";
+import ChatPage from "./pages/ChatPage";
+import ChallengeCoachView from "./pages/ChallengeCoachView";
+import ChampionshipsPage from "./pages/Championships";
+
+import Leaderboard from "./pages/LeaderBoard";
 
 function App() {
   return (
@@ -28,9 +35,10 @@ function App() {
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/coach" element={<ChallengeCoachView />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/championships" element={<ChampionshipsPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
-      <Dashboard />
     </div>
   );
 }

@@ -20,14 +20,20 @@
      2) Logo (Left) 
      ------------------------------ */
   .nav-left {
-    flex: 1;
+    flex: 0 0 100px;
+    margin-right: 0;
   }
   
   .nav-logo {
-    font-size: 1.75rem;
-    font-weight: bold;
-    color: #79c79f;
+    display: flex;
+    align-items: center;
     text-decoration: none;
+  }
+  
+  .nav-logo-img {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
   }
   
   /* ------------------------------
@@ -46,6 +52,7 @@
     padding: 0;
     margin: 0;
     position: relative;
+    justify-content: center;
   }
   
   .nav-item {
@@ -80,7 +87,7 @@
      4) (Optional) Avatar (Right)
      ------------------------------ */
   .nav-right {
-    flex: 1;
+    flex: 0 0 100px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -88,10 +95,18 @@
   
   /* Join Now button styles */
   .join-now-btn {
-    display: flex;
+    display: inline-flex;       /* makes it size to content but stay inline */
     align-items: center;
+    justify-content: center;
+    white-space: nowrap;        /* never wrap the text */
     gap: 8px;
-    padding: 10px 20px;
+  
+    /* increase horizontal padding */
+    padding: 10px 24px;
+  
+    /* optional: ensure it’s at least this wide */
+    min-width: 120px;
+  
     background-color: #10b981;
     color: white;
     border: none;
@@ -101,6 +116,7 @@
     cursor: pointer;
     transition: background-color 0.2s ease;
   }
+  
   
   .join-now-btn:hover {
     background-color: #68b68e;

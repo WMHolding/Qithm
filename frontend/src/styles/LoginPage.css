@@ -18,7 +18,6 @@ body {
   align-items: center;
   /* ما نحتاج padding هنا */
 }
-
 /* ========== WHITE CARD BOX ========== */
 .login-card {
   background-color: #ffffff;
@@ -107,6 +106,44 @@ body {
   max-width: 290px;
   text-align: left;
 }
+
+/* Add this to your LoginPage.css file */
+
+.success-msg {
+  color: #388e3c;
+  background-color: #f1f8e9;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  width: 100%;
+  text-align: center;
+  border-left: 4px solid #388e3c;
+}
+
+/* Optional: Enhance the existing error-msg style */
+.error-msg {
+  color: #d32f2f;
+  font-size: 0.9rem;
+  margin: 0 0 0.8rem 0;
+  width: 100%;
+  text-align: left;
+}
+
+/* For form-level errors, add this style */
+.form-error-msg {
+  color: #d32f2f;
+  background-color: #ffebee;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  width: 100%;
+  text-align: center;
+  border-left: 4px solid #d32f2f;
+}
+
+/* ========== Trying to create nice background========== */
 
 /* ========== RESPONSIVE (SMALL SCREENS) ========== */
 @media (max-width: 600px) {
