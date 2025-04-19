@@ -12,6 +12,7 @@ import ChallengesPage from "./pages/Challenges";
 import LandingPage from "./pages/LandingPage";
 import ChatPage from "./pages/ChatPage";
 import ChallengeCoachView from "./pages/ChallengeCoachView";
+import ChampionshipsPage from "./pages/Championships";
 
 import Leaderboard from "./pages/LeaderBoard";
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/coach" element={<ChallengeCoachView />} />
+          <Route path="/championships" element={<ChampionshipsPage />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
         </Routes>
       </BrowserRouter>

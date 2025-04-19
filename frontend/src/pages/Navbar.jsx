@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import '../styles/Navbar.css';
 import Avatar from '../assets/istockphoto-1309328823-612x612.jpg';
+import Qithm from '../assets/Qithm.png';
 
 const navItems = [
   { name: 'Dashboard', path: '/dashboard' },
@@ -13,10 +14,17 @@ const navItems = [
 ];
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  const goToSignIn = () => {
+    navigate('/signin');
+  };
   const location = useLocation();
   const [activeIndex, setActiveIndex] = useState(0);
   const indicatorRef = useRef(null);
   const navItemRefs = useRef([]);
+
+
 
   // Update active index based on current location's pathname.
   useEffect(() => {
@@ -49,7 +57,9 @@ function Navbar() {
     <nav className="navbar">
       {/* Left Section: Logo */}
       <div className="nav-left">
-        <Link to="/" className="nav-logo">FitComp</Link>
+        <Link to="/" className="nav-logo">
+          <img src={Qithm} alt="Qithm Logo" className="nav-logo-img" />
+        </Link>
       </div>
 
       {/* Center Section: Navigation Links */}
@@ -72,7 +82,8 @@ function Navbar() {
       {/* Right Section: Conditional Content */}
       <div className="nav-right">
         {isLandingPage ? (
-          <button className="join-now-btn">
+          <button className="join-now-btn"
+          onClick={() => navigate('/signin') }>
             Join Now <ArrowRight size={16} />
           </button>
         ) : (
