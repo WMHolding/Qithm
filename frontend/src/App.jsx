@@ -6,6 +6,7 @@ import ChallengesPage from "./pages/Challenges";
 import ProfilePage from "./pages/ProfilePage";
 import LandingPage from "./pages/LandingPage";
 import ChatPage from "./pages/ChatPage";
+import ChallengeCoachView from "./pages/ChallengeCoachView";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/challenges" element={<ChallengesPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/chat" element={<ChatPage />} />
+          <Route path="/coach" element={<ChallengeCoachView />} />
         </Routes>
       </BrowserRouter>
     </div>

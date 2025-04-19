@@ -84,9 +84,10 @@ const LandingPage = () => {
         <div className="section-container">
           <h2 className="cta-heading">Ready to Begin Your Fitness Transformation?</h2>
           <p className="cta-description">
-            Join thousands of members who are crushing their fitness goals with Qitham.
+            Join thousands of members who are crushing their fitness goals with Qithm.
           </p>
-          <button className="cta-button">Start Your Free Trial</button>
+          <button className="cta-button"> Join Now!
+          <ArrowRight className="button-icon" /></button>
         </div>
       </section>
       
@@ -94,9 +95,9 @@ const LandingPage = () => {
       <footer className="footer">
         <div className="footer-container">
           <div className="footer-content">
-            <div className="footer-logo">Qitham</div>
+            <div className="footer-logo">Qithm</div>
             <p className="footer-copyright">
-              © {new Date().getFullYear()} Qitham. All rights reserved.
+              © {new Date().getFullYear()} Qithm. All rights reserved.
             </p>
           </div>
         </div>

@@ -34,13 +34,14 @@ html, body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 90%;
+  height: 60%;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.5;
   color: var(--text-color);
   background: linear-gradient(to bottom, #ffffff, #f9fafb);
   /* Remove padding-top to allow navbar to be properly positioned */
   position: relative; /* Important for absolute positioning children */
+  
 }
 
 .section-container {
