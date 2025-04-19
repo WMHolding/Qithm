@@ -1,5 +1,5 @@
 .leaderboard {
-    width: 1000px;
+    width: 1100px;
     margin: auto;
     background: #fff;
     padding: 2rem;
@@ -41,16 +41,22 @@
     flex: 1;
     text-align: center;
   }
+ 
+
   .col-name {
     flex: 1;
     text-align: left;
-  }
-
-  .col-name {
     display: flex;
     align-items: left;
     gap: 0.75rem;
     justify-content: left;
+  }
+  .col-steps{
+    display: flex;
+    align-items: right;
+    gap: 0.75rem;
+
+    justify-content: right;
   }
   
   .pfp {
