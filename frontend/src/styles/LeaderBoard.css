@@ -54,4 +54,25 @@
     border-radius: 50%;
     object-fit: cover;
   }
+  .leaderboard-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .toggle-button {
+    background-color: #939393;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .toggle-button:hover {
+    background-color: #6b6b6b;
+  }
   
