@@ -1,0 +1,58 @@
+/* Dashboard.css */
+/* Add box-sizing reset */
+* {
+    box-sizing: border-box;
+}
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    background: #f8fafc;
+    overflow: hidden;
+    /* Prevent scrollbar issues */
+}
+
+/* Left Sidebar Fix */
+.left-sidebar {
+    width: 320px;
+    flex-shrink: 0;
+    /* Prevent width collapse */
+    background: white;
+    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    border-right: 1px solid #e2e8f0;
+    height: 100vh;
+    /* Full height */
+    overflow-y: auto;
+    /* Enable scrolling if needed */
+}
+
+/* Right Content Fix */
+.right-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    /* Fix flex overflow */
+}
+
+.weekly-progress-section {
+    flex: 1;
+    min-height: 50%;
+    /* Ensure visibility */
+    padding: 2rem;
+    border-bottom: 1px solid #e2e8f0;
+    background: white;
+    overflow: auto;
+    /* Allow content scrolling */
+}
+
+.active-challenges-section {
+    flex: 1;
+    padding: 2rem;
+    background: #f8fafc;
+    min-height: 50%;
+    /* Ensure visibility */
+    overflow: auto;
+    /* Allow content scrolling */
+}

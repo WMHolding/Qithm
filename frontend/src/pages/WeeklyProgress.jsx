@@ -55,12 +55,14 @@ const ProgressChart = ({ type, percentage, progress }) => {
     );
 };
 
+
+
 const WeeklyProgressSection = () => (
     <section className="weekly-progress">
         <h2>Your Weekly Progress</h2>
         <div className="charts-container">
             <ProgressChart
-                type="cardio"
+                type="cardio"           //we can change it later to make it as parameter from App file
                 percentage={79}
                 progress="23.7/30 km"
             />
