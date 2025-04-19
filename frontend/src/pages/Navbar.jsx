@@ -76,11 +76,14 @@ function Navbar() {
             Join Now <ArrowRight size={16} />
           </button>
         ) : (
+          <Link to="/profile">
+
           <img
             src={Avatar}
             alt="User Avatar"
             className="nav-avatar"
           />
+          </Link>
         )}
       </div>
     </nav>

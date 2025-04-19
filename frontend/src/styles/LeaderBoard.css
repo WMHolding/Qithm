@@ -1,10 +1,12 @@
 .leaderboard {
-    width: 1000px;
+    width: 1100px;
     margin: auto;
     background: #fff;
     padding: 2rem;
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    margin-top: 80px; /* Push content below navbar */
+
   }
   
   .leaderboard h2 {
@@ -34,18 +36,27 @@
   }
   
   .col-rank,
-  .col-name,
   .col-steps,
   .col-streak {
     flex: 1;
     text-align: center;
   }
-  
+ 
+
   .col-name {
+    flex: 1;
+    text-align: left;
     display: flex;
-    align-items: center;
+    align-items: left;
     gap: 0.75rem;
-    justify-content: center;
+    justify-content: left;
+  }
+  .col-steps{
+    display: flex;
+    align-items: right;
+    gap: 0.75rem;
+
+    justify-content: right;
   }
   
   .pfp {
