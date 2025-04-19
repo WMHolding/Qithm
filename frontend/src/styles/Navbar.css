@@ -1,158 +1,117 @@
-/* ------------------------------
-   1) Navbar Container
-   ------------------------------ */
-   .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 70px;
-    padding: 0 40px;
-    background: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
-  
-  /* ------------------------------
-     2) Logo (Left) 
-     ------------------------------ */
-  .nav-left {
-    flex: 1;
-  }
-  
-  .nav-logo {
-    font-size: 1.75rem;
-    font-weight: bold;
-    color: #79c79f;
-    text-decoration: none;
-  }
-  
-  /* ------------------------------
-     3) Nav Links (Center)
-     ------------------------------ */
-  .nav-center {
-    flex: 2;
-    display: flex;
-    justify-content: center;
-  }
-  
+/* Navbar.css updated */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 70px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo {
+  color: #4caf50;
+  font-size: 24px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.nav-item {
+  margin: 0 15px;
+  position: relative;
+}
+
+.nav-item a {
+  display: inline-block;
+  padding: 10px 0;
+  color: #666666;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-item.active a {
+  color: #4caf50;
+}
+
+.nav-indicator {
+  position: absolute;
+  bottom: -2px;
+  height: 3px;
+  background-color: #4caf50;
+  transition: left 0.3s, width 0.3s;
+  border-radius: 2px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.join-now-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.join-now-btn:hover {
+  background-color: #388e3c;
+}
+
+.nav-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
   .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    position: relative;
+    gap: 10px;
   }
-  
+
   .nav-item {
-    position: relative;
+    margin: 0 10px;
   }
-  
-  .nav-item a {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #333;
-    text-decoration: none;
-    padding: 0.5rem 0;
-    transition: color 0.3s;
+}
+
+@media (max-width: 576px) {
+  .nav-center {
+    display: none;
   }
-  
-  .nav-item a:hover,
-  .nav-item.active a {
-    color: #79c79f;
-  }
-  
-  /* Animated underline */
-  .nav-indicator {
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    height: 2px;
-    background: #79c79f;
-    transition: all 0.3s ease;
-  }
-  
-  /* ------------------------------
-     4) (Optional) Avatar (Right)
-     ------------------------------ */
-  .nav-right {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  
-  /* Join Now button styles */
-  .join-now-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    background-color: #10b981;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .join-now-btn:hover {
-    background-color: #68b68e;
-  }
-  
-  .user-profile {
-    display: flex;
-    align-items: center;
-  }
-  
-  .nav-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 2px solid #79c79f;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-  
-  .nav-avatar:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 1024px) {
-    .navbar {
-      padding: 0 20px;
-    }
-    
-    .nav-links {
-      gap: 1.5rem;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .nav-center {
-      display: none; /* Consider adding a mobile menu */
-    }
-    
-    .nav-right {
-      margin-left: auto;
-    }
-    
-    .join-now-btn {
-      padding: 8px 16px;
-      font-size: 0.9rem;
-    }
-  }
-  
-  /* ------------------------------
-     5) Page Content Adjustment
-     ------------------------------ */
-  /* Remove any body or container padding-top for fixed nav */
-  /* If you had padding-top:70px anywhere, remove it so content starts at top */
-  
+}

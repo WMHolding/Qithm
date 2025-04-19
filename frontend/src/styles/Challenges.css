@@ -1,15 +1,18 @@
-/* ===============================================
+/* /* ===============================================
    1) Global Variables & Base
    =============================================== */
-   :root {
-    /* Colors - Enhanced Palette */
-    --primary-50: #e8f5e9;
-    --primary-100: #c8e6c9;
-    --primary-300: #81c784;
-    --primary-500: #4caf50;  /* Main primary */
-    --primary-600: #43a047;  /* Primary dark */
-    --primary-700: #388e3c;  /* Even darker */
-    /* Base styles */
+:root {
+  /* Colors - Enhanced Palette */
+  --primary-50: #e8f5e9;
+  --primary-100: #c8e6c9;
+  --primary-300: #81c784;
+  --primary-500: #4caf50;
+  /* Main primary */
+  --primary-600: #43a047;
+  /* Primary dark */
+  --primary-700: #388e3c;
+  /* Even darker */
+  /* Base styles */
 
   --primary-color: #10b981;
   --primary-hover: #059669;
@@ -22,577 +25,597 @@
   --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
   --border-radius: 8px;
   --animation-speed: 0.3s;
-    
-    /* Neutral colors */
-    --neutral-50: #f9fafb;   /* Background */
-    --neutral-100: #f3f4f6;  /* Light background */
-    --neutral-200: #e5e7eb;  /* Borders */
-    --neutral-300: #d1d5db;  /* Light text */
-    --neutral-500: #666666;  /* Secondary text */
-    --neutral-700: #374151;  /* Main text */
-    --neutral-900: #111827;  /* Headings */
-    
-    /* System colors */
-    --success: #4caf50;
-    --warning: #ff9800;
-    --error: #f44336;
-    --info: #2196f3;
-    
-    /* Typography */
-    --font-base: 16px;    /* Increased from 14px for better readability */
-    --font-sm: 14px;      /* Increased from 12px */
-    --font-md: 16px;      /* Increased from 14px */
-    --font-lg: 20px;      /* Increased from 16px */
-    --font-xl: 24px;      /* New size for headings */
-    
-    /* Font weights */
-    --font-regular: 400;
-    --font-medium: 500;
-    --font-semibold: 600;
-    --font-bold: 700;
-    
-    /* Font family */
-    --font-family: 'Inter', 'SF Pro Display', Arial, sans-serif;
-  
-    /* Improved spacing scale */
-    --space-2xs: 4px;
-    --space-xs: 8px;
-    --space-sm: 12px;
-    --space-md: 16px;
-    --space-lg: 24px;
-    --space-xl: 32px;
-    --space-2xl: 48px;
-    
-    /* Layout */
-    --radius: 8px;
-    --radius-sm: 6px;
-    --radius-lg: 12px;
-    --radius-pill: 9999px;
-    --header-h: 70px;
-    
-    /* Grid system */
-    --container-max: 1200px;
-    --content-padding: var(--space-lg);
-    
-    /* Shadows */
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  }
-  
-  *,
-  *::before,
-  *::after { 
-    box-sizing: border-box; 
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-    background: var(--primary-color);
-    color: var(--neutral-700);
-    font-family: var(--font-family);
-    font-size: var(--font-base);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    line-height: 1.2;
-    margin-top: 0;
-    color: var(--neutral-900);
-    font-weight: var(--font-semibold);
-  }
-  
-  /* ===============================================
+
+  /* Neutral colors */
+  --neutral-50: #f9fafb;
+  /* Background */
+  --neutral-100: #f3f4f6;
+  /* Light background */
+  --neutral-200: #e5e7eb;
+  /* Borders */
+  --neutral-300: #d1d5db;
+  /* Light text */
+  --neutral-500: #666666;
+  /* Secondary text */
+  --neutral-700: #374151;
+  /* Main text */
+  --neutral-900: #111827;
+  /* Headings */
+
+  /* System colors */
+  --success: #4caf50;
+  --warning: #ff9800;
+  --error: #f44336;
+  --info: #2196f3;
+
+  /* Typography */
+  --font-base: 16px;
+  /* Increased from 14px for better readability */
+  --font-sm: 14px;
+  /* Increased from 12px */
+  --font-md: 16px;
+  /* Increased from 14px */
+  --font-lg: 20px;
+  /* Increased from 16px */
+  --font-xl: 24px;
+  /* New size for headings */
+
+  /* Font weights */
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* Font family */
+  --font-family: 'Inter', 'SF Pro Display', Arial, sans-serif;
+
+  /* Improved spacing scale */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Layout */
+  --radius: 8px;
+  --radius-sm: 6px;
+  --radius-lg: 12px;
+  --radius-pill: 9999px;
+  --header-h: 70px;
+
+  /* Grid system */
+  --container-max: 1200px;
+  --content-padding: var(--space-lg);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--primary-color);
+  color: var(--neutral-700);
+  font-family: var(--font-family);
+  font-size: var(--font-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  margin-top: 0;
+  color: var(--neutral-900);
+  font-weight: var(--font-semibold);
+}
+
+/* ===============================================
      2) Header Navigation
      =============================================== */
-  .header-nav {
-    position: sticky;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: var(--header-h);
-    padding: 0 var(--space-lg);
-    background: white;
-    box-shadow: var(--shadow-sm);
-    z-index: 100;
-    border-bottom: 1px solid var(--neutral-200);
-    margin-bottom: var(--space-xl); /* Added margin for space between navbar and search */
-  }
-  
-  .header-nav .logo {
-    font-size: var(--font-lg);
-    font-weight: var(--font-bold);
-    color: var(--primary-500);
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
-  
-  .header-nav .nav-links {
-    display: flex;
-    gap: var(--space-xl);
-    margin-left: var(--space-xl);
-    font-size: var(--font-md);
-  }
-  
-  .header-nav .nav-links a {
-    color: var(--neutral-500);
-    text-decoration: none;
-    padding: var(--space-xs) var(--space-sm);
-    font-weight: var(--font-medium);
-    position: relative;
-    transition: color 0.2s ease;
-  }
-  
-  .header-nav .nav-links a.active {
-    color: var(--primary-500);
-    font-weight: var(--font-semibold);
-  }
-  
-  .header-nav .nav-links a::after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--primary-500);
-    transform: scaleX(0);
-    transition: transform 0.2s ease;
-  }
-  
-  .header-nav .nav-links a.active::after,
-  .header-nav .nav-links a:hover::after {
-    transform: scaleX(1);
-  }
-  
-  .header-nav .user-area { 
-    display: flex; 
-    align-items: center; 
-    gap: var(--space-md); 
-  }
-  
-  .header-nav .login-btn {
-    padding: var(--space-xs) var(--space-md);
-    background: var(--primary-500);
-    color: white;
-    border: none;
-    border-radius: var(--radius-sm);
-    font-size: var(--font-sm);
-    font-weight: var(--font-medium);
-    cursor: pointer;
-    transition: background 0.2s ease;
-  }
-  
-  .header-nav .login-btn:hover { 
-    background: var(--primary-600); 
-  }
-  
-  .header-nav .avatar {
-    width: 36px; 
-    height: 36px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid white;
-    box-shadow: var(--shadow-sm);
-  }
-  
-  /* ===============================================
+.header-nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+  padding: 0 var(--space-lg);
+  background: white;
+  box-shadow: var(--shadow-sm);
+  z-index: 100;
+  border-bottom: 1px solid var(--neutral-200);
+  margin-bottom: var(--space-xl);
+  /* Added margin for space between navbar and search */
+}
+
+.header-nav .logo {
+  font-size: var(--font-lg);
+  font-weight: var(--font-bold);
+  color: var(--primary-500);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header-nav .nav-links {
+  display: flex;
+  gap: var(--space-xl);
+  margin-left: var(--space-xl);
+  font-size: var(--font-md);
+}
+
+.header-nav .nav-links a {
+  color: var(--neutral-500);
+  text-decoration: none;
+  padding: var(--space-xs) var(--space-sm);
+  font-weight: var(--font-medium);
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.header-nav .nav-links a.active {
+  color: var(--primary-500);
+  font-weight: var(--font-semibold);
+}
+
+.header-nav .nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary-500);
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.header-nav .nav-links a.active::after,
+.header-nav .nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+.header-nav .user-area {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.header-nav .login-btn {
+  padding: var(--space-xs) var(--space-md);
+  background: var(--primary-500);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-sm);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.header-nav .login-btn:hover {
+  background: var(--primary-600);
+}
+
+.header-nav .avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ===============================================
      3) Full-Width Page Container
      =============================================== */
-  .challenges-page {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: var(--space-xl) var(--content-padding);
-  }
-  
-  /* ===============================================
+.challenges-page {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--content-padding);
+}
+
+/* ===============================================
      4) Search Bar
      =============================================== */
-  .challenges-search {
-    max-width: 400px;
-    margin-bottom: var(--space-lg);
-    position: relative;
-  }
-  
-  .challenges-search input {
-    width: 100%;
-    padding: var(--space-sm) var(--space-lg);
-    padding-left: calc(var(--space-lg) + 16px); /* Space for search icon */
-    border-radius: var(--radius);
-    border: 1px solid var(--neutral-300);
-    font-size: var(--font-md);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    background: white;
-  }
-  
-  .challenges-search input:focus {
-    outline: none;
-    border-color: var(--primary-300);
-    box-shadow: 0 0 0 3px var(--primary-100);
-  }
-  
-  .challenges-search::before {
-    content: "🔍";
-    position: absolute;
-    left: var(--space-sm);
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--neutral-500);
-    pointer-events: none;
-  }
-  
-  /* ===============================================
+.challenges-search {
+  max-width: 400px;
+  margin-bottom: var(--space-lg);
+  position: relative;
+}
+
+.challenges-search input {
+  width: 100%;
+  padding: var(--space-sm) var(--space-lg);
+  padding-left: calc(var(--space-lg) + 16px);
+  /* Space for search icon */
+  border-radius: var(--radius);
+  border: 1px solid var(--neutral-300);
+  font-size: var(--font-md);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background: white;
+}
+
+.challenges-search input:focus {
+  outline: none;
+  border-color: var(--primary-300);
+  box-shadow: 0 0 0 3px var(--primary-100);
+}
+
+.challenges-search::before {
+  content: "🔍";
+  position: absolute;
+  left: var(--space-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--neutral-500);
+  pointer-events: none;
+}
+
+/* ===============================================
      5) Category Filters
      =============================================== */
-  .challenges-category-filters {
-    display: flex;
-    gap: var(--space-sm);
-    margin-bottom: var(--space-xl);
-    flex-wrap: wrap;
-  }
-  
-  .challenges-category-filters button {
-    padding: var(--space-xs) var(--space-md);
-    border-radius: var(--radius-pill);
-    font-size: var(--font-sm);
-    font-weight: var(--font-medium);
-    border: 1px solid var(--neutral-300);
-    background: white;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  
-  .challenges-category-filters button.active {
-    background: var(--primary-500);
-    color: white;
-    border-color: var(--primary-500);
-  }
-  
-  .challenges-category-filters button:hover:not(.active) {
-    background: var(--neutral-100);
-    border-color: var(--neutral-400);
-  }
-  
-  /* ===============================================
+.challenges-category-filters {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.challenges-category-filters button {
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-sm);
+  font-weight: var(--font-medium);
+  border: 1px solid var(--neutral-300);
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.challenges-category-filters button.active {
+  background: var(--primary-500);
+  color: white;
+  border-color: var(--primary-500);
+}
+
+.challenges-category-filters button:hover:not(.active) {
+  background: var(--neutral-100);
+  border-color: var(--neutral-400);
+}
+
+/* ===============================================
      6) Featured Challenges
      =============================================== */
-  .featured-challenges {
-    padding: 20px;
-  }
-  
-  .featured-challenges h2 {
-    font-size: var(--font-xl);
-    margin-bottom: var(--space-md);
-    font-weight: var(--font-bold);
-    color: var(--neutral-900);
-  }
-  
-  .challenge-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px 0;
-  }
-  
-  .challenge-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-    cursor: pointer;
-  }
-  
-  .challenge-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  .challenge-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .challenge-info {
-    padding: 16px;
-  }
-  
-  .challenge-info h3 {
-    margin: 0 0 8px 0;
-    font-size: 1.2rem;
-    color: #333;
-  }
-  
-  .challenge-info p {
-    margin: 4px 0;
-    color: #666;
-  }
-  
-  .enroll-button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 12px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s;
-  }
-  
-  .enroll-button:hover {
-    background-color: #45a049;
-  }
-  
-  .enroll-button.enrolled {
-    background-color: #999;
-    cursor: not-allowed;
-  }
-  
-  .challenge-hover-content {
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid #eee;
-  }
-  
-  /* ===============================================
+.featured-challenges {
+  padding: 20px;
+}
+
+.featured-challenges h2 {
+  font-size: var(--font-xl);
+  margin-bottom: var(--space-md);
+  font-weight: var(--font-bold);
+  color: var(--neutral-900);
+}
+
+.challenge-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.challenge-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.challenge-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.challenge-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.challenge-info {
+  padding: 16px;
+}
+
+.challenge-info h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.challenge-info p {
+  margin: 4px 0;
+  color: #666;
+}
+
+.enroll-button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.enroll-button:hover {
+  background-color: #45a049;
+}
+
+.enroll-button.enrolled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+.challenge-hover-content {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+/* ===============================================
      7) Active Challenges
      =============================================== */
-  .active-challenges {
-    padding: 20px;
-  }
-  
-  .active-challenges h2 {
-    margin-bottom: 20px;
-    color: #333;
-    font-size: 1.8rem;
-  }
-  
-  .challenge-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
-  
-  .challenge-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-  }
-  
-  .challenge-card:hover {
-    transform: translateY(-4px);
-  }
-  
-  .challenge-image {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-  }
-  
-  .challenge-info {
-    padding: 16px;
-  }
-  
-  .challenge-info h3 {
-    margin: 0 0 12px 0;
-    font-size: 1.2rem;
-    color: #333;
-  }
-  
-  .challenge-stats {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    font-size: 0.9rem;
-    color: #666;
-  }
-  
-  .challenge-progress {
-    margin-bottom: 16px;
-  }
-  
-  .progress-bar {
-    height: 8px;
-    background-color: #eee;
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 8px;
-  }
-  
-  .progress-fill {
-    height: 100%;
-    background-color: #4CAF50;
-    transition: width 0.3s ease;
-  }
-  
-  .progress-text {
-    font-size: 0.9rem;
-    color: #666;
-    text-align: right;
-  }
-  
-  .challenge-details {
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid #eee;
-  }
-  
-  .description {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 8px;
-  }
-  
-  .category-tag {
-    display: inline-block;
-    padding: 4px 8px;
-    background-color: #e8f5e9;
-    color: #4CAF50;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    text-transform: capitalize;
-  }
-  
-  /* Empty state */
-  .challenge-cards:empty::after {
-    content: "No active challenges yet. Join some challenges to get started!";
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 40px;
-    color: #666;
-    font-style: italic;
-    background: #f5f5f5;
-    border-radius: 8px;
-  }
-  
-  /* ===============================================
+.active-challenges {
+  padding: 20px;
+}
+
+.active-challenges h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.challenge-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.challenge-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.challenge-card:hover {
+  transform: translateY(-4px);
+}
+
+.challenge-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.challenge-info {
+  padding: 16px;
+}
+
+.challenge-info h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.challenge-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.challenge-progress {
+  margin-bottom: 16px;
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #4CAF50;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: right;
+}
+
+.challenge-details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.category-tag {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #e8f5e9;
+  color: #4CAF50;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+/* Empty state */
+.challenge-cards:empty::after {
+  content: "No active challenges yet. Join some challenges to get started!";
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-style: italic;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+/* ===============================================
      8) Button Styles
      =============================================== */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-xs) var(--space-md);
-    border-radius: var(--radius-sm);
-    font-weight: var(--font-medium);
-    transition: all 0.2s ease;
-    cursor: pointer;
-    border: none;
-  }
-  
-  .btn-primary {
-    background: var(--primary-500);
-    color: white;
-  }
-  
-  .btn-primary:hover {
-    background: var(--primary-600);
-  }
-  
-  .btn-outline {
-    background: transparent;
-    border: 1px solid var(--neutral-300);
-    color: var(--neutral-700);
-  }
-  
-  .btn-outline:hover {
-    border-color: var(--neutral-500);
-    background: var(--neutral-100);
-  }
-  
-  .btn-sm {
-    padding: var(--space-2xs) var(--space-xs);
-    font-size: var(--font-sm);
-  }
-  
-  .btn-lg {
-    padding: var(--space-sm) var(--space-lg);
-    font-size: var(--font-md);
-  }
-  
-  /* ===============================================
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-sm);
+  font-weight: var(--font-medium);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--primary-500);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-600);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--neutral-300);
+  color: var(--neutral-700);
+}
+
+.btn-outline:hover {
+  border-color: var(--neutral-500);
+  background: var(--neutral-100);
+}
+
+.btn-sm {
+  padding: var(--space-2xs) var(--space-xs);
+  font-size: var(--font-sm);
+}
+
+.btn-lg {
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--font-md);
+}
+
+/* ===============================================
      9) Responsive Tweaks
      =============================================== */
-  @media (max-width: 768px) {
-    .header-nav {
-      padding: 0 var(--space-md);
-    }
-    
-    .header-nav .nav-links {
-      gap: var(--space-md);
-    }
-    
-    .challenge-card {
-      flex: 0 0 240px;
-    }
-    
-    .challenge-card img {
-      height: 140px;
-    }
-    
-    .featured-challenges {
-      margin-bottom: var(--space-xl);
-    }
-  }
-  
-  @media (max-width: 640px) {
-    .header-nav .nav-links {
-      gap: var(--space-sm);
-    }
-    
-    .header-nav .logo img {
-      width: 120px;
-    }
-    
-    .challenges-search {
-      max-width: 100%;
-    }
-    
-    .challenge-card {
-      flex: 0 0 200px;
-    }
-    
-    .challenge-card img {
-      height: 120px;
-    }
-    
-    .challenges-page {
-      padding: var(--space-lg) var(--space-md);
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .challenge-card {
-      flex: 0 0 160px;
-    }
-    
-    .challenge-card img {
-      height: 100px;
-    }
-    
-    .header-nav .nav-links {
-      display: none; /* Consider implementing a mobile menu */
-    }
-    
-    .challenges-category-filters button {
-      font-size: var(--font-sm);
-      padding: var(--space-2xs) var(--space-sm);
-    }
+@media (max-width: 768px) {
+  .header-nav {
+    padding: 0 var(--space-md);
   }
 
-  .challenge-card:hover .challenge-hover-popup {
-    display: block;
+  .header-nav .nav-links {
+    gap: var(--space-md);
   }
+
+  .challenge-card {
+    flex: 0 0 240px;
+  }
+
+  .challenge-card img {
+    height: 140px;
+  }
+
+  .featured-challenges {
+    margin-bottom: var(--space-xl);
+  }
+}
+
+@media (max-width: 640px) {
+  .header-nav .nav-links {
+    gap: var(--space-sm);
+  }
+
+  .header-nav .logo img {
+    width: 120px;
+  }
+
+  .challenges-search {
+    max-width: 100%;
+  }
+
+  .challenge-card {
+    flex: 0 0 200px;
+  }
+
+  .challenge-card img {
+    height: 120px;
+  }
+
+  .challenges-page {
+    padding: var(--space-lg) var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .challenge-card {
+    flex: 0 0 160px;
+  }
+
+  .challenge-card img {
+    height: 100px;
+  }
+
+  .header-nav .nav-links {
+    display: none;
+    /* Consider implementing a mobile menu */
+  }
+
+  .challenges-category-filters button {
+    font-size: var(--font-sm);
+    padding: var(--space-2xs) var(--space-sm);
+  }
+}
+
+.challenge-card:hover .challenge-hover-popup {
+  display: block;
+}
 
 .challenges-view-container {
   min-height: 100vh;
@@ -602,7 +625,8 @@
 
 .challenges-dashboard {
   display: flex;
-  padding: 20px 32px; /* Increased horizontal padding */
+  padding: 20px 32px;
+  /* Increased horizontal padding */
   margin-top: 60px;
   width: 100%;
 }
@@ -610,7 +634,8 @@
 .challenges-content {
   flex: 1;
   width: 100%;
-  max-width: none; /* Remove any max-width constraints */
+  max-width: none;
+  /* Remove any max-width constraints */
 }
 
 .challenges-header {

@@ -1,7 +1,7 @@
 // src/components/ActiveChallenges.js
 import React from 'react';
 import { challengesData } from './FeaturedChallenges'; // Import the consolidated data
-import '../styles/Challenges.css';
+import '../styles/ActiveChallenges.css';
 
 function ActiveChallenges({ searchQuery, selectedCategory }) {
   // Filter active (enrolled) challenges
@@ -24,9 +24,9 @@ function ActiveChallenges({ searchQuery, selectedCategory }) {
 
           return (
             <div className="challenge-card" key={challenge.id}>
-              <img 
-                src={challenge.image} 
-                alt={challenge.title} 
+              <img
+                src={challenge.image}
+                alt={challenge.title}
                 className="challenge-image"
               />
               <div className="challenge-info">

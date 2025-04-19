@@ -1,58 +1,147 @@
 /* Dashboard.css */
-/* Add box-sizing reset */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+body {
+    background: #f8fafc;
+    font-family: var(--font-family);
+    overflow-x: hidden;
+}
+
+/* Main container structure */
 .dashboard-container {
     display: flex;
     height: 100vh;
-    background: #f8fafc;
-    overflow: hidden;
-    /* Prevent scrollbar issues */
+    width: 100%;
+    padding-top: 70px;
+    /* Space for fixed navbar */
+    position: relative;
 }
 
-/* Left Sidebar Fix */
+/* Left Sidebar - Fixed, non-scrollable */
 .left-sidebar {
-    width: 320px;
-    flex-shrink: 0;
-    /* Prevent width collapse */
-    background: white;
-    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08);
-    padding: 1.5rem;
+    width: 280px;
+    position: fixed;
+    left: -20px;
+    top: 50px;
+    /* Position below navbar */
+    height: calc(100vh - 70px);
+    background: #f8fafc;
+    padding: 20px;
+    z-index: 99;
     border-right: 1px solid #e2e8f0;
-    height: 100vh;
-    /* Full height */
-    overflow-y: auto;
-    /* Enable scrolling if needed */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-/* Right Content Fix */
+/* Right Content - Scrollable as one unit */
 .right-content {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    /* Fix flex overflow */
+    margin-left: 280px;
+    /* Match sidebar width */
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+    /* This makes the entire right content scroll together */
+    scroll-behavior: smooth;
 }
 
 .weekly-progress-section {
-    flex: 1;
-    min-height: 50%;
-    /* Ensure visibility */
-    padding: 2rem;
-    border-bottom: 1px solid #e2e8f0;
+    min-height: 350px;
+    padding: 24px;
     background: white;
-    overflow: auto;
-    /* Allow content scrolling */
+    border-bottom: 1px solid #e2e8f0;
 }
 
 .active-challenges-section {
-    flex: 1;
-    padding: 2rem;
+    padding: 24px;
     background: #f8fafc;
-    min-height: 50%;
-    /* Ensure visibility */
-    overflow: auto;
-    /* Allow content scrolling */
+    min-height: 350px;
+}
+
+/* Search for Coach Button */
+.search-coach-button-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.search-coach-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+.search-coach-button:hover {
+    background-color: #388e3c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* Show button on scroll */
+.search-coach-button-container.visible {
+    opacity: 1;
+}
+
+/* Section transitions and enhancements */
+.weekly-progress-section,
+.active-challenges-section {
+    transition: background-color 0.3s ease;
+}
+
+.weekly-progress-section:hover,
+.active-challenges-section:hover {
+    background-color: #fafbfc;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+    .left-sidebar {
+        width: 240px;
+    }
+
+    .right-content {
+        margin-left: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .left-sidebar {
+        width: 220px;
+    }
+
+    .right-content {
+        margin-left: 220px;
+    }
+}
+
+@media (max-width: 576px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .left-sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .right-content {
+        margin-left: 0;
+        height: auto;
+    }
 }

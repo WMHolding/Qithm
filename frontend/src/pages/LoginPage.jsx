@@ -25,7 +25,7 @@ function LoginPage() {
       return;
     }
     // ✅ بيانات صحيحة – نفّذ ما تريد:
-    console.log("Logged in:", { username, password });
+    console.log("Logged in:", { username, password }); navigate("/Dashboard")
     // ... تابع للصفحة التالية
   };
 

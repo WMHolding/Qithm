@@ -1,10 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-<<<<<<< HEAD
 import { ArrowRight } from 'lucide-react';
-=======
 
->>>>>>> abdullah/dashboard
 import '../styles/Navbar.css';
 import Avatar from '../assets/istockphoto-1309328823-612x612.jpg';
 
