@@ -1,3 +1,85 @@
+// // import React, { useState } from "react";
+// // import "../styles/LoginPage.css";
+// // import Qithm from "../assets/Qithm.png";
+// // import { useNavigate } from "react-router-dom";
+
+// // function LoginPage() {
+// //   const navigate = useNavigate();
+// //   const [username, setUsername] = useState("");
+// //   const [password, setPassword] = useState("");
+// //   const [errors, setErrors] = useState({});
+
+// //   const validate = () => {
+// //     const e = {};
+// //     if (username.trim().length < 5)
+// //       e.username = "Username must be at least 5 characters";
+// //     if (password.length < 8)
+// //       e.password = "Password must be at least 8 characters";
+// //     return e;
+// //   };
+
+// //   const handleSubmit = () => {
+// //     const e = validate();
+// //     if (Object.keys(e).length) {
+// //       setErrors(e);
+// //       return;
+// //     }
+// //     // ✅ بيانات صحيحة – نفّذ ما تريد:
+// //     console.log("Logged in:", { username, password });
+
+// //     // ... تابع للصفحة التالية
+// //   };
+
+// //   return (
+// //     <div className="login-page">
+// //       <div className="login-card">
+// //         <img src={Qithm} alt="Logo" className="login-logo" />
+// //         <h1 className="login-title">Login</h1>
+
+// //         <input
+// //           type="text"
+// //           placeholder="User name"
+// //           className="login-input"
+// //           value={username}
+// //           onChange={(e) => {
+// //             setUsername(e.target.value);
+// //             setErrors({ ...errors, username: undefined });
+// //           }}
+// //         />
+// //         {errors.username && <p className="error-msg">{errors.username}</p>}
+
+// //         <input
+// //           type="password"
+// //           placeholder="Password"
+// //           className="login-input"
+// //           value={password}
+// //           onChange={(e) => {
+// //             setPassword(e.target.value);
+// //             setErrors({ ...errors, password: undefined });
+// //           }}
+// //         />
+// //         {errors.password && <p className="error-msg">{errors.password}</p>}
+
+// //         <button className="login-button" onClick={handleSubmit}>
+// //           Login
+// //         </button>
+
+// //         <p className="login-text">Don't have an account?</p>
+
+// //         <button
+// //           className="create-button"
+// //           onClick={() => navigate("/SignInPage")}
+// //         >
+// //           Create Account
+// //         </button>
+// //       </div>
+// //     </div>
+// //   );
+// // }
+
+// // export default LoginPage;
+
+// // LoginPage.js
 // import React, { useState } from "react";
 // import "../styles/LoginPage.css";
 // import Qithm from "../assets/Qithm.png";
@@ -8,6 +90,7 @@
 //   const [username, setUsername] = useState("");
 //   const [password, setPassword] = useState("");
 //   const [errors, setErrors] = useState({});
+//   const [message, setMessage] = useState(""); // For login status messages
 
 //   const validate = () => {
 //     const e = {};
@@ -24,9 +107,32 @@
 //       setErrors(e);
 //       return;
 //     }
+
+//     // Check if the user exists in local storage
+//     const users = JSON.parse(localStorage.getItem("users") || "[]");
+//     const user = users.find(
+//       (u) => u.username === username && u.password === password
+//     );
+
+//     if (user) {
+//       // Successful login
+//       setMessage("Login successful!");
+//       console.log("Logged in:", { username, password });
+
+//       // Store current user in session storage (optional)
+//       sessionStorage.setItem("currentUser", JSON.stringify(user));
+
+//       // Navigate to the next page after a brief delay
+//       setTimeout(() => {
+//         navigate("/dashboard"); // Change this to your target page
+//       }, 1000);
+//     } else {
+//       // Failed login
+//       setMessage("Invalid username or password. Please try again or sign up.");
+//     }
 //     // ✅ بيانات صحيحة – نفّذ ما تريد:
 //     console.log("Logged in:", { username, password });
-
+//     navigate("/Dashboard");
 //     // ... تابع للصفحة التالية
 //   };
 
@@ -36,6 +142,16 @@
 //         <img src={Qithm} alt="Logo" className="login-logo" />
 //         <h1 className="login-title">Login</h1>
 
+//         {message && (
+//           <p
+//             className={
+//               message.includes("successful") ? "success-msg" : "error-msg"
+//             }
+//           >
+//             {message}
+//           </p>
+//         )}
+
 //         <input
 //           type="text"
 //           placeholder="User name"
@@ -44,6 +160,7 @@
 //           onChange={(e) => {
 //             setUsername(e.target.value);
 //             setErrors({ ...errors, username: undefined });
+//             setMessage(""); // Clear any previous messages
 //           }}
 //         />
 //         {errors.username && <p className="error-msg">{errors.username}</p>}
@@ -56,6 +173,7 @@
 //           onChange={(e) => {
 //             setPassword(e.target.value);
 //             setErrors({ ...errors, password: undefined });
+//             setMessage(""); // Clear any previous messages
 //           }}
 //         />
 //         {errors.password && <p className="error-msg">{errors.password}</p>}
@@ -65,7 +183,6 @@
 //         </button>
 
 //         <p className="login-text">Don't have an account?</p>
-
 //         <button
 //           className="create-button"
 //           onClick={() => navigate("/SignInPage")}
@@ -79,7 +196,6 @@
 
 // export default LoginPage;
 
-// LoginPage.js
 import React, { useState } from "react";
 import "../styles/LoginPage.css";
 import Qithm from "../assets/Qithm.png";
@@ -90,7 +206,7 @@ function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
-  const [message, setMessage] = useState(""); // For login status messages
+  const [message, setMessage] = useState("");
 
   const validate = () => {
     const e = {};
@@ -101,38 +217,39 @@ function LoginPage() {
     return e;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const e = validate();
     if (Object.keys(e).length) {
       setErrors(e);
       return;
     }
 
-    // Check if the user exists in local storage
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
-    const user = users.find(
-      (u) => u.username === username && u.password === password
-    );
+    try {
+      const res = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
 
-    if (user) {
-      // Successful login
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.msg || "Login failed");
+
       setMessage("Login successful!");
-      console.log("Logged in:", { username, password });
+      sessionStorage.setItem("currentUser", JSON.stringify(data.user));
 
-      // Store current user in session storage (optional)
-      sessionStorage.setItem("currentUser", JSON.stringify(user));
-
-      // Navigate to the next page after a brief delay
+      // توجيه حسب الدور
       setTimeout(() => {
-        navigate("/dashboard"); // Change this to your target page
-      }, 1000);
-    } else {
-      // Failed login
-      setMessage("Invalid username or password. Please try again or sign up.");
+        if (data.user?.role === "admin") {
+          alert("Welcome Admin!");
+          navigate("/admin");
+        } else {
+          console.log(data.user);
+          navigate("/dashboard");
+        }
+      }, 800);
+    } catch (err) {
+      setMessage(err.message);
     }
-    // ✅ بيانات صحيحة – نفّذ ما تريد:
-    console.log("Logged in:", { username, password }); navigate("/Dashboard")
-    // ... تابع للصفحة التالية
   };
 
   return (
@@ -159,7 +276,7 @@ function LoginPage() {
           onChange={(e) => {
             setUsername(e.target.value);
             setErrors({ ...errors, username: undefined });
-            setMessage(""); // Clear any previous messages
+            setMessage("");
           }}
         />
         {errors.username && <p className="error-msg">{errors.username}</p>}
@@ -172,7 +289,7 @@ function LoginPage() {
           onChange={(e) => {
             setPassword(e.target.value);
             setErrors({ ...errors, password: undefined });
-            setMessage(""); // Clear any previous messages
+            setMessage("");
           }}
         />
         {errors.password && <p className="error-msg">{errors.password}</p>}
@@ -182,10 +299,7 @@ function LoginPage() {
         </button>
 
         <p className="login-text">Don't have an account?</p>
-        <button
-          className="create-button"
-          onClick={() => navigate("/SignInPage")}
-        >
+        <button className="create-button" onClick={() => navigate("/signin")}>
           Create Account
         </button>
       </div>
