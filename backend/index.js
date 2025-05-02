@@ -1,21 +1,37 @@
-
 const express = require('express');
+const mongoose = require('mongoose');
+require('dotenv').config();
+const challengeRoutes = require('./routes/challenges');
+const testRoutes = require('./routes/test');
 
 const app = express();
-
-
 const port = process.env.PORT || 3000;
 
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// MongoDB connection
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/fitcomp')
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('MongoDB connection error:', err));
+
+// Routes
 app.get('/', (req, res) => {
   res.send('Welcome to FitComp!');
 });
 
-
 app.get('/health', (req, res) => {
   res.json({ status: 'Healthy' });
+});
+
+app.use('/api/challenges', challengeRoutes);
+app.use('/api/test', testRoutes);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Something went wrong!' });
 });
 
 app.listen(port, () => {
