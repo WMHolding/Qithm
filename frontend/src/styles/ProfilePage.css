@@ -4,7 +4,6 @@
   height: 100vh;
 }
 
-.profile-container {
   
 .profile-container {
     display: flex;
@@ -12,6 +11,8 @@
     padding: 2rem;
     margin: auto;
     color: black;
+    margin-top: 80px; /* Push content below navbar */
+
   }
   
   .profile-left {
@@ -65,10 +66,7 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     margin-top: 0.3rem;
-<<<<<<< HEAD
     background-color: #f5f5f5;
     color: black;
-=======
->>>>>>> azex
   }
   

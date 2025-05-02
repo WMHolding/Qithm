@@ -1,80 +1,214 @@
-/* Main container for the entire section */
+/* WeeklyProgress.css */
 .weekly-progress {
     width: 100%;
-    padding: 2rem 0;
+    padding: 1rem 0;
+    height: 100%;
 }
 
 .weekly-progress h2 {
-    color: #3f3f3f;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
 }
 
 /* Container for both progress charts */
 .charts-container {
-    position: absolute;
-    left: 330px;
+    position: relative;
     display: flex;
-    /* Flex layout for side-by-side charts */
     gap: 200px;
-    /* Space between charts */
     justify-content: center;
-    /* Center horizontally */
+    align-items: center;
     flex-wrap: wrap;
-    /* Allow wrapping on small screens */
-    padding: 3rem 7rem;
+    padding: 2rem;
     background-color: #fff;
     border-radius: 12px;
+    height: calc(100% - 60px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 /* Individual chart container */
 .progress-chart {
     display: flex;
-    /* Flex layout */
     flex-direction: column;
-    /* Stack elements vertically */
     align-items: center;
-    /* Center horizontally */
+    text-align: center;
 }
 
-/* SVG wrapper - crucial for positioning */
+/* SVG wrapper */
 .chart-container {
     position: relative;
-    /* Needed for absolute positioning */
     width: fit-content;
-    /* Match SVG width */
-}
-
-/* SVG element styling */
-.chart-container svg {
-    display: block;
-    /* Remove default inline spacing */
+    margin-bottom: 1rem;
 }
 
 /* Chart title styling */
 .chart-label h3 {
-    color: #5a5959;
-    /* Dark gray color */
-    font-size: 1.2rem;
-    /* Title size */
-    margin: 0;
-    /* Remove default margin */
+    color: #333;
+    font-size: 1.25rem;
+    margin: 0.5rem 0 0;
+    font-weight: 500;
 }
 
-/* ------------------ */
-/* SVG Text Elements - Applies to <text> elements in JSX */
-/* ------------------ */
+/* SVG Text Elements */
 .percentage {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     font-weight: bold;
-    fill: #3f3f3f;
-    text-shadow: 0 2px 4px rgba(193, 193, 193, 0.211);
-    /* Text readability enhancement */
+    fill: #333;
 }
 
 .progress-text {
-    font-size: 0.9rem;
-    fill: #3f3f3f;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    /* Subtle shadow */
+    font-size: 1rem;
+    fill: #666;
+}
+
+/* Make circles thinner to match prototype */
+.charts-container svg circle {
+    stroke-width: 10;
+}
+
+@media (max-width: 768px) {
+    .charts-container {
+        gap: 40px;
+        padding: 1rem;
+    }
+}
+
+/* Add Daily Progress Button */
+.add-daily-progress-button {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    background-color: #4CAF50;
+    /* Green background */
+    color: white;
+    /* White text */
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: -15rem;
+    /* Add spacing from the charts */
+    /* Center the button horizontally */
+}
+
+.add-daily-progress-button:hover {
+    background-color: #45a049;
+    /* Darker green on hover */
+    transform: scale(1.05);
+    /* Slightly enlarge on hover */
+}
+
+.add-daily-progress-button:active {
+    transform: scale(0.95);
+    /* Slightly shrink on click */
+}
+
+
+/* Add to WeeklyProgress.css */
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 24px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: modalFade 0.3s ease-in-out;
+}
+
+@keyframes modalFade {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: #333;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.input-group {
+    margin-bottom: 16px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #222222;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cancel-button {
+    background-color: #f1f1f1;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.cancel-button:hover {
+    background-color: #e5e5e5;
+}
+
+.add-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.add-button:hover {
+    background-color: #388e3c;
 }

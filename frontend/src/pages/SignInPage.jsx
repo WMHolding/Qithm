@@ -173,7 +173,7 @@ function SignInPage() {
 
     // Navigate to login page after a brief delay
     setTimeout(() => {
-      navigate("/");
+      navigate("/login"); // Change this to your target page
     }, 2000);
   };
 
@@ -254,7 +254,7 @@ function SignInPage() {
         </button>
 
         <p className="login-text">Already have an account?</p>
-        <button className="create-button" onClick={() => navigate("/")}>
+        <button className="create-button" onClick={() => navigate("/login")}>
           Login
         </button>
       </div>
