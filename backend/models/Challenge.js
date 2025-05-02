@@ -2,15 +2,26 @@ const mongoose = require("mongoose");
 
 const challengeSchema = new mongoose.Schema({
   title: { type: String, required: true },
-  description: { type: String },
+  description: { type: String, required: true },
+  shortDescription: { type: String, required: true },
+  category: { type: String, enum: ['cardio', 'strength'], required: true },
   difficulty: { type: String, enum: ['easy', 'medium', 'hard'] },
-
+  image: { type: String, required: true },
+  
   participants: [{
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // the user in the challenge
-    progress: { type: Number, default: 0 }, // 0 to 100
-    completed: { type: Boolean, default: false }
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    progress: { type: Number, default: 0 },
+    progressGoal: { type: Number, required: true },
+    streak: { type: Number, default: 0 },
+    status: { 
+      type: String, 
+      enum: ['active', 'completed', 'dropped'],
+      default: 'active'
+    }
   }],
 
+  requirements: [{ type: String }],
+  isFeatured: { type: Boolean, default: false },
   startDate: { type: Date },
   endDate: { type: Date }
 }, { timestamps: true });
