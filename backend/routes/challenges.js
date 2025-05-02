@@ -12,6 +12,7 @@ router.get('/featured', async (req, res) => {
   }
 });
 
+
 // Get user's active challenges
 router.get('/active/:userId', async (req, res) => {
   try {
@@ -51,5 +52,14 @@ router.post('/enroll', async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
+
+// Get a challenge by ID
+router.get('/:id', async (req, res) => {
+    const one = await Challenge.findOne({ id: req.params.id });
+    if (!one) {
+      return res.status(404).json({ message: 'Challenge not found' });
+    }
+    res.json(one);
+  });
 
 module.exports = router; 
