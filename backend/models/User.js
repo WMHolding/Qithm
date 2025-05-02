@@ -7,6 +7,11 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   role: { type: String, enum: ['user', 'coach', 'admin'], default: 'user' },
 
+  birthday: { type: Date },
+  weight: { type: String },
+  height: { type: String },
+  phone: { type: String },
+  
   avatar: { type: String }, // the usrl
 
   points: { type: Number, default: 0 }, // save the points for leaderboard
