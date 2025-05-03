@@ -4,8 +4,13 @@ require('dotenv').config();
 const challengeRoutes = require('./routes/challenges');
 const testRoutes = require('./routes/test');
 const championshipRoutes = require('./routes/championships');
+const http = require('http');
+const initializeSocket = require('./socket');
+const chatRoutes = require('./routes/chats');
 
 const app = express();
+const server = http.createServer(app);
+const io = initializeSocket(server);
 const port = process.env.PORT || 3000;
 
 // Middleware
@@ -29,6 +34,7 @@ app.get('/health', (req, res) => {
 app.use('/api/challenges', challengeRoutes);
 app.use('/api/test', testRoutes);
 app.use('/api/championships', championshipRoutes);
+app.use('/api/chats', chatRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -36,7 +42,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Something went wrong!' });
 });
 
-app.listen(port, () => {
-  console.log(`FitComp app listening on port ${port}`)
+server.listen(port, () => {
+  console.log(`Server running on port ${port}`);
   console.log(`DB connected: ${process.env.MONGODB_URI}`);
 });

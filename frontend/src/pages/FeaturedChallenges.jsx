@@ -1,5 +1,7 @@
 // src/components/FeaturedChallenges.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { challengesApi } from '../services/api';
+import ChallengePopup from './ChallengePopup';
 
 // Import all challenge images
 import runningImg from '../assets/E10AF8SV.jpg';
@@ -7,7 +9,6 @@ import weightLossImg from '../assets/Dashboard_835_Addressing-the-most-common-we
 import strengthImg from '../assets/weight-workout.jpg.webp';
 import WorkoutStreak from '../assets/image.jpg';
 import TenKSteps from '../assets/maxresdefault.jpg';
-import ChallengePopup from './ChallengePopup';
 
 // Consolidated challenges data
 export const challengesData = [
@@ -119,36 +120,65 @@ export const challengesData = [
 ];
 
 function FeaturedChallenges({ searchQuery, selectedCategory }) {
-  const [enrolledChallenges, setEnrolledChallenges] = useState(new Set());
+  const [challenges, setChallenges] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [selectedChallenge, setSelectedChallenge] = useState(null);
+  const [enrolledChallenges, setEnrolledChallenges] = useState(new Set());
 
-  // Filter featured challenges
-  const filteredChallenges = challengesData.filter((challenge) => {
+  useEffect(() => {
+    loadFeaturedChallenges();
+  }, []);
+
+  const loadFeaturedChallenges = async () => {
+    try {
+      setLoading(true);
+      const data = await challengesApi.getFeaturedChallenges();
+      setChallenges(data);
+    } catch (err) {
+      setError('Failed to load featured challenges');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Filter challenges based on search and category
+  const filteredChallenges = challenges.filter((challenge) => {
     const matchesSearch = challenge.title
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
     const matchesCategory =
       selectedCategory === 'all' || challenge.category === selectedCategory;
-    const isFeatured = challenge.isFeatured;
-    return matchesSearch && matchesCategory && isFeatured;
+    return matchesSearch && matchesCategory;
   });
 
-  const handleEnroll = (challenge) => {
+  const handleEnroll = async (challenge) => {
     setSelectedChallenge(challenge);
   };
 
-  const handleConfirmEnroll = (challenge) => {
-    setEnrolledChallenges(prev => {
-      const newSet = new Set(prev);
-      newSet.add(challenge.id);
-      return newSet;
-    });
-    setSelectedChallenge(null);
+  const handleConfirmEnroll = async (challenge) => {
+    try {
+      // Replace with actual user ID from your auth system
+      const userId = 'current_user_id'; 
+      await challengesApi.enrollInChallenge(userId, challenge._id, challenge.progressGoal);
+      
+      setEnrolledChallenges(prev => {
+        const newSet = new Set(prev);
+        newSet.add(challenge._id);
+        return newSet;
+      });
+      
+      setSelectedChallenge(null);
+      // Optionally refresh the challenges list
+      loadFeaturedChallenges();
+    } catch (error) {
+      console.error('Failed to enroll:', error);
+    }
   };
 
-  const handleClosePopup = () => {
-    setSelectedChallenge(null);
-  };
+  if (loading) return <div>Loading featured challenges...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div className="featured-challenges">
@@ -157,24 +187,23 @@ function FeaturedChallenges({ searchQuery, selectedCategory }) {
         {filteredChallenges.map((challenge) => (
           <div 
             className="challenge-card" 
-            key={challenge.id}
+            key={challenge._id}
             onClick={() => handleEnroll(challenge)}
           >
             <img src={challenge.image} alt={challenge.title} />
             <div className="challenge-info">
               <h3>{challenge.title}</h3>
-              <p>{challenge.participants} participants</p>
-              <p>{challenge.daysLeft} days left</p>
+              <p>{challenge.participants.length} participants</p>
+              <p>{challenge.shortDescription}</p>
               <div className="challenge-hover-content">
-                <p>{challenge.shortDescription}</p>
                 <button 
-                  className={`enroll-button ${enrolledChallenges.has(challenge.id) ? 'enrolled' : ''}`}
+                  className={`enroll-button ${enrolledChallenges.has(challenge._id) ? 'enrolled' : ''}`}
                   onClick={(e) => {
                     e.stopPropagation();
                     handleEnroll(challenge);
                   }}
                 >
-                  {enrolledChallenges.has(challenge.id) ? 'Enrolled' : 'Enroll Now'}
+                  {enrolledChallenges.has(challenge._id) ? 'Enrolled' : 'Enroll Now'}
                 </button>
               </div>
             </div>
@@ -186,8 +215,8 @@ function FeaturedChallenges({ searchQuery, selectedCategory }) {
         <ChallengePopup 
           challenge={selectedChallenge}
           onEnroll={handleConfirmEnroll}
-          isEnrolled={enrolledChallenges.has(selectedChallenge.id)}
-          onClose={handleClosePopup}
+          isEnrolled={enrolledChallenges.has(selectedChallenge._id)}
+          onClose={() => setSelectedChallenge(null)}
         />
       )}
     </div>

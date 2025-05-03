@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const challengeSchema = new mongoose.Schema({
+  id: { type: String, required: true, unique: true },
   title: { type: String, required: true },
   description: { type: String, required: true },
   shortDescription: { type: String, required: true },
@@ -24,6 +25,10 @@ const challengeSchema = new mongoose.Schema({
   isFeatured: { type: Boolean, default: false },
   startDate: { type: Date },
   endDate: { type: Date }
-}, { timestamps: true });
+}, {
+  timestamps: true,
+  toJSON: true,
+  toObject: true
+});
 
 module.exports = mongoose.model("Challenge", challengeSchema);
