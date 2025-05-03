@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const challengeRoutes = require('./routes/challenges');
 const testRoutes = require('./routes/test');
+const championshipRoutes = require('./routes/championships');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -27,6 +28,7 @@ app.get('/health', (req, res) => {
 
 app.use('/api/challenges', challengeRoutes);
 app.use('/api/test', testRoutes);
+app.use('/api/championships', championshipRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -35,5 +37,6 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log(`FitComp app listening on port ${port}`);
+  console.log(`FitComp app listening on port ${port}`)
+  console.log(`DB connected: ${process.env.MONGODB_URI}`);
 });
