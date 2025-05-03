@@ -1,33 +1,42 @@
 // src/components/ActiveChallenges.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { challengesApi } from '../services/api';
-import '../styles/ActiveChallenges.css';
+import { useAuth } from '../contexts/AuthContext'; // Import useAuth
+import '../styles/ActiveChallenges.css'; // Ensure CSS path is correct
 
 function ActiveChallenges({ searchQuery, selectedCategory }) {
+  const { currentUser } = useAuth(); // Get current user
   const [challenges, setChallenges] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    loadUserChallenges();
-  }, []);
+  const loadUserChallenges = useCallback(async () => {
+    if (!currentUser) {
+      setLoading(false);
+      // Don't set an error, just show message or nothing if user isn't logged in
+      setChallenges([]);
+      return;
+    }
 
-  const loadUserChallenges = async () => {
     try {
       setLoading(true);
-      // Replace with actual user ID from your auth system
-      const userId = 'current_user_id';
-      const data = await challengesApi.getUserChallenges(userId);
+      setError(null);
+      const data = await challengesApi.getUserChallenges(currentUser._id); // Use current user's ID
       setChallenges(data);
     } catch (err) {
       setError('Failed to load your active challenges');
       console.error(err);
+      setChallenges([]); // Clear challenges on error
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentUser]); // Reload challenges if the user changes
 
-  // Filter active challenges
+  useEffect(() => {
+    loadUserChallenges();
+  }, [loadUserChallenges]);
+
+  // Filter active challenges based on search and category
   const filteredChallenges = challenges.filter((challenge) => {
     const matchesSearch = challenge.title
       .toLowerCase()
@@ -37,45 +46,79 @@ function ActiveChallenges({ searchQuery, selectedCategory }) {
     return matchesSearch && matchesCategory;
   });
 
+  // Show message or component based on login status
+  if (!currentUser) {
+    return (
+       <div className="active-challenges">
+         <h2>Your Active Challenges</h2>
+         <p>Please log in to see your active challenges.</p>
+       </div>
+    );
+  }
+
   if (loading) return <div>Loading your active challenges...</div>;
-  if (error) return <div>{error}</div>;
+  if (error) return <div className="error-message">{error}</div>;
+  if (!loading && filteredChallenges.length === 0) {
+     return (
+       <div className="active-challenges">
+         <h2>Your Active Challenges</h2>
+         <p>You haven't joined any challenges yet, or none match the current filter.</p>
+       </div>
+     );
+  }
 
   return (
     <div className="active-challenges">
       <h2>Your Active Challenges</h2>
       <div className="challenge-cards">
         {filteredChallenges.map((challenge) => {
-          const participant = challenge.participants.find(p => p.user === 'current_user_id');
-          const progressPercent = (participant.progress / participant.progressGoal) * 100;
+          // Find the participant data for the *current* user
+          const participant = challenge.participants.find(
+             // Compare user ID strings for safety
+            p => p.user && p.user.toString() === currentUser._id
+          );
+
+          // Handle cases where participant data might be missing (shouldn't happen for active challenges, but good practice)
+          if (!participant) {
+            console.warn(`Participant data not found for user ${currentUser._id} in active challenge ${challenge._id}`);
+            return null; // Skip rendering this card if data is inconsistent
+          }
+
+          // Calculate progress safely
+          const progressPercent = participant.progressGoal > 0
+            ? (participant.progress / participant.progressGoal) * 100
+            : 0;
 
           return (
-            <div className="challenge-card" key={challenge._id}>
+            <div className="challenge-card active-card" key={challenge._id}>
               <img
-                src={challenge.image}
+                src={challenge.image || '/path/to/default/image.jpg'} // Provide fallback image
                 alt={challenge.title}
                 className="challenge-image"
               />
               <div className="challenge-info">
                 <h3>{challenge.title}</h3>
                 <div className="challenge-stats">
-                  <p>Status: {participant.status}</p>
-                  <p>Streak: {participant.streak} days</p>
+                  {/* Display participant-specific data */}
+                  <p>Status: <span className={`status-${participant.status}`}>{participant.status}</span></p>
+                  <p>Streak: {participant.streak || 0} days</p>
                 </div>
                 <div className="challenge-progress">
-                  <div className="progress-bar">
+                  <div className="progress-bar-container"> {/* Added container for better styling */}
                     <div
-                      className="progress-fill"
-                      style={{ width: `${progressPercent}%` }}
+                      className="progress-bar-fill" // Renamed class for clarity
+                      style={{ width: `${Math.min(progressPercent, 100)}%` }} // Cap at 100%
                     />
                   </div>
                   <p className="progress-text">
-                    Progress: {participant.progress}/{participant.progressGoal}
+                    Progress: {participant.progress} / {participant.progressGoal}
                   </p>
                 </div>
-                <div className="challenge-details">
-                  <p className="description">{challenge.shortDescription}</p>
-                  <div className="category-tag">{challenge.category}</div>
-                </div>
+                 {/* Optionally add short description or category */}
+                 <div className="challenge-details">
+                   <p className="description">{challenge.shortDescription}</p>
+                   <div className="category-tag">{challenge.category}</div>
+                 </div>
               </div>
             </div>
           );

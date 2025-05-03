@@ -7,6 +7,8 @@ const championshipRoutes = require('./routes/championships');
 const http = require('http');
 const initializeSocket = require('./socket');
 const chatRoutes = require('./routes/chats');
+const authRoutes = require('./routes/authRoutes'); // Adjust path
+const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
@@ -16,6 +18,7 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI)
@@ -35,6 +38,7 @@ app.use('/api/challenges', challengeRoutes);
 app.use('/api/test', testRoutes);
 app.use('/api/championships', championshipRoutes);
 app.use('/api/chats', chatRoutes);
+app.use('/api/auth', authRoutes); 
 
 // Error handling middleware
 app.use((err, req, res, next) => {
