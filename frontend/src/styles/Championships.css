@@ -3,10 +3,9 @@
 
 /* Container & Header */
 .championships-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #ffffff, #f0fdf4);
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .championships-header {
@@ -71,95 +70,90 @@
 /* Grid */
 .championships-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-  gap: 24px;
-  padding: 40px 24px 80px;
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
 }
 
 /* Cards */
 .championship-card {
-  background: var(--white);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: transform var(--animation-speed) ease,
-              box-shadow var(--animation-speed) ease;
-  position: relative;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: transform 0.2s;
 }
 
 .championship-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
 }
 
-/* Image + Overlay */
-.card-header {
-  position: relative;
-}
-
-.card-header img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-}
-
-.card-overlay {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.4);
+.championship-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity var(--animation-speed) ease;
+  margin-bottom: 15px;
 }
 
-.championship-card:hover .card-overlay {
-  opacity: 1;
+.championship-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
 }
 
-.card-overlay button {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 20px;
-  background: var(--primary-color);
-  color: var(--white);
-  border: none;
-  border-radius: var(--border-radius);
-  font-weight: 600;
-  transition: background-color var(--animation-speed) ease;
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
-.card-overlay button:hover {
-  background: var(--primary-hover);
+.status.upcoming { background: #e3f2fd; color: #1976d2; }
+.status.active { background: #e8f5e9; color: #2e7d32; }
+.status.completed { background: #eeeeee; color: #616161; }
+
+.championship-details {
+  color: #666;
 }
 
-/* Body */
-.card-body {
-  padding: 16px 20px 24px;
-}
-
-.card-body h3 {
-  font-size: 1.2rem;
-  margin-bottom: 8px;
+.date-range {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text-color);
-}
-
-.card-body p {
+  justify-content: space-between;
+  margin: 15px 0;
   font-size: 0.9rem;
-  color: var(--text-light);
-  margin-bottom: 6px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+}
+
+.participants-info {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.enroll-button {
+  width: 100%;
+  padding: 10px;
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.enroll-button:hover {
+  background: #1976d2;
+}
+
+.user-stats {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.user-stats h4 {
+  margin: 0 0 10px 0;
+  color: #333;
 }
 
 /* No results message */
