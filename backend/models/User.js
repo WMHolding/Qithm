@@ -21,12 +21,17 @@ const userSchema = new mongoose.Schema({
     default: '' 
   },
   role: { type: String, enum: ['user', 'coach', 'admin'], default: 'user' },
-
+  
+  //for profile page
   birthday: { type: Date },
   weight: { type: String },
   height: { type: String },
   phone: { type: String },
-  
+  //for leaderboard
+  steps: { type: Number, default: 0 }, // for walking
+  resistanceHours: { type: Number, default: 0 }, // for resistance training
+  streak: { type: Number, default: 0 },
+
   avatar: { type: String }, // the usrl
 
   points: { type: Number, default: 0 }, // save the points for leaderboard
