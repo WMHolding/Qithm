@@ -1,4 +1,4 @@
-// src/components/ChampionshipsPage.jsx
+// src/pages/Championships.jsx
 import React, { useState } from 'react';
 import Navbar from './Navbar';
 import FeaturedChampionships from './FeaturedChampionships';

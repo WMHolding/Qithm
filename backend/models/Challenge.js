@@ -6,25 +6,34 @@ const challengeSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   shortDescription: { type: String, required: true },
-  category: { type: String, enum: ['cardio', 'strength'], required: true },
-  difficulty: { type: String, enum: ['easy', 'medium', 'hard'] },
-  image: { type: String, required: true },
+  category: { 
+    type: String, 
+    required: true,
+    enum: ['cardio', 'strength', 'flexibility', 'endurance']
+  },
+  difficulty: { 
+    type: String, 
+    required: true,
+    enum: ['beginner', 'intermediate', 'advanced']
+  },
+  image: { type: String },
 
   participants: [{
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     progress: { type: Number, default: 0 },
-    // Consider adding a default here if progressGoal isn't always sent by frontend
-    progressGoal: { type: Number, required: true, default: 100 },
+    progressGoal: { type: Number, default: 100 },
     streak: { type: Number, default: 0 },
-    status: {
-      type: String,
+    status: { 
+      type: String, 
       enum: ['active', 'completed', 'dropped'],
       default: 'active'
     },
     enrollmentDate: { type: Date, default: Date.now } // Keep enrollment date
   }],
 
-  requirements: [{ type: String }],
+  requirements: [{
+    type: String
+  }],
   isFeatured: { type: Boolean, default: false },
   startDate: { type: Date },
   endDate: { type: Date },

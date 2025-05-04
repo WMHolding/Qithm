@@ -1,22 +1,17 @@
-// /home/ubuntu/backend_code/config/db.js
-const mongoose = require("mongoose");
-const { MongoMemoryServer } = require("mongodb-memory-server");
+require('dotenv').config();
 
-let mongoServer;
+
+const mongoose = require("mongoose");
 
 const connectDB = async () => {
     try {
-        // Start in-memory MongoDB server for testing
-        mongoServer = await MongoMemoryServer.create();
-        const mongoUri = mongoServer.getUri();
+        // Use environment variable for MongoDB URI
+        const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017/";
 
         mongoose.set("strictQuery", true); // Recommended setting
-        const conn = await mongoose.connect(mongoUri, {
-            // useNewUrlParser: true, // Deprecated
-            // useUnifiedTopology: true, // Deprecated
-        });
+        const conn = await mongoose.connect(mongoUri);
 
-        console.log(`MongoDB Connected (In-Memory): ${conn.connection.host}`);
+        console.log(`MongoDB Connected: ${conn.connection.host}`);
         return conn;
     } catch (error) {
         console.error(`Error connecting to MongoDB: ${error.message}`);
@@ -27,10 +22,7 @@ const connectDB = async () => {
 const disconnectDB = async () => {
     try {
         await mongoose.connection.close();
-        if (mongoServer) {
-            await mongoServer.stop();
-            console.log("In-Memory MongoDB stopped.");
-        }
+        console.log("MongoDB disconnected.");
     } catch (error) {
         console.error(`Error disconnecting MongoDB: ${error.message}`);
         process.exit(1);

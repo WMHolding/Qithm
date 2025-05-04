@@ -15,12 +15,22 @@ axiosInstance.interceptors.request.use((config) => {
 });
 
 export const championshipsApi = {
+  getAllChampionships: async () => {
+    try {
+      const response = await axiosInstance.get('/championships');
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching championships:', error.response?.data || error);
+      throw new Error('Failed to load championships');
+    }
+  },
+
   getFeaturedChampionships: async () => {
     try {
       const response = await axiosInstance.get('/championships/featured');
       return response.data;
     } catch (error) {
-      console.error('Error fetching featured championships:', error.response?.data || error.message);
+      console.error('Error fetching featured championships:', error.response?.data || error);
       throw new Error('Failed to load featured championships');
     }
   },
@@ -33,7 +43,7 @@ export const championshipsApi = {
       const response = await axiosInstance.get(`/championships/user/${userId}`);
       return response.data;
     } catch (error) {
-      console.error('Error fetching user championships:', error.response?.data || error.message);
+      console.error('Error fetching user championships:', error.response?.data || error);
       throw new Error('Failed to load active championships');
     }
   },
@@ -46,7 +56,7 @@ export const championshipsApi = {
       });
       return response.data;
     } catch (error) {
-      console.error('Error enrolling in championship:', error.response?.data || error.message);
+      console.error('Error enrolling in championship:', error.response?.data || error);
       throw new Error(error.response?.data?.message || 'Failed to enroll in championship');
     }
   }

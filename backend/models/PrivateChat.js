@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const privateChatSchema = new mongoose.Schema({
   participants: [
-    { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
   ],
 
   messages: [

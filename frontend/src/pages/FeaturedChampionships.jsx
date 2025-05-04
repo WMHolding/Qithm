@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Trophy, Calendar, Users } from 'lucide-react';
-import { championshipsApi } from '../services/api';
+import { championshipsApi } from '../services/championshipsApi';
 import { useAuth } from '../contexts/AuthContext';
 
 export default function FeaturedChampionships({ searchQuery, selectedStatus }) {
