@@ -4,8 +4,9 @@ import axios from 'axios';
 import io from 'socket.io-client';
 
 // Use Vite environment variable for API URL if available, otherwise use localhost for development
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
-
+const API_URL = import.meta.env.MODE === 'production'
+  ? '/api' // Relative path for production on Vercel
+  : 'http://localhost:3000/api'; // Your local backend URL for development
 console.log("API_URL for chatApi:", API_URL); // Log the API URL being used
 
 // Function to get the token from localStorage

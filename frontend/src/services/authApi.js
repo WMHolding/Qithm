@@ -3,8 +3,9 @@
 import axios from 'axios';
 
 // Use Vite environment variable for API URL if available, otherwise use localhost for development
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
-
+const API_URL = import.meta.env.MODE === 'production'
+  ? '/api' // Relative path for production on Vercel
+  : 'http://localhost:3000/api'; // Your local backend URL for development
 // Function to get the token from localStorage
 const getToken = () => localStorage.getItem('token');
 
