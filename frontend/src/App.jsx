@@ -16,7 +16,7 @@ import Dashboard from "./pages/Dashboard";
 import ChampionshipsPage from "./pages/Championships";
 import AdminDashboard from "./pages/Admin";
 
-// Import AuthProvider
+// Import AuthProvider in the main App component
 import { AuthProvider } from './contexts/AuthContext'; // Adjust path if needed
 
 function App() {
