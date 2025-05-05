@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     // Using a placeholder service is good for deployment.
     // Replace with your hosted default image URL if you have one.
-    default: 'https://via.placeholder.com/150?text=Default+Avatar'
+    default: 'https://cdn.vectorstock.com/i/1000v/92/16/default-profile-picture-avatar-user-icon-vector-46389216.jpg'
   },
   role: {
     type: String,

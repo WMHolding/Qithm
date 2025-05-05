@@ -1,6 +1,6 @@
 // backend/routes/authRoutes.js (Backend)
 const express = require('express');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User'); // Adjust path if needed
 const auth = require('../middleware/authMiddleware'); // Import the auth middleware
