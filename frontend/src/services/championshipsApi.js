@@ -1,6 +1,8 @@
+// src/services/championshipsApi.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api';
+// Use Vite environment variable for API URL if available, otherwise use localhost for development
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
@@ -59,5 +61,19 @@ export const championshipsApi = {
       console.error('Error enrolling in championship:', error.response?.data || error);
       throw new Error(error.response?.data?.message || 'Failed to enroll in championship');
     }
+  },
+  
+  completeChallenge: async (championshipId, userId, challengeId, pointsEarned) => {
+    try {
+      const response = await axiosInstance.post(`/championships/${championshipId}/complete-challenge`, {
+        userId,
+        challengeId,
+        pointsEarned
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error completing challenge:', error.response?.data || error);
+      throw new Error('Failed to complete challenge');
+    }
   }
-}; 
+};

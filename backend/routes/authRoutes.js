@@ -1,20 +1,36 @@
-// routes/authRoutes.js (Backend)
+// backend/routes/authRoutes.js (Backend)
 const express = require('express');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken'); // Install: npm install jsonwebtoken
+const jwt = require('jsonwebtoken');
 const User = require('../models/User'); // Adjust path if needed
+const auth = require('../middleware/authMiddleware'); // Import the auth middleware
 const router = express.Router();
 
 // --- User Signup ---
+// POST /api/auth/signup
 router.post('/signup', async (req, res) => {
   try {
-    const { username, email, password } = req.body;
-    
-    // Check if user exists
-    const existingUser = await User.findOne({ $or: [{ email }, { username }] });
-    if (existingUser) {
-      return res.status(400).json({ message: 'User already exists' });
+    const { username, email, password, role } = req.body; // Assuming role might be sent here (handle carefully)
+
+    // Simple validation
+    if (!username || !email || !password) {
+        return res.status(400).json({ message: 'Please enter all fields' });
     }
+
+    // Check if user exists (case-insensitive email/username)
+    const existingUser = await User.findOne({ $or: [{ email: new RegExp(`^${email}$`, 'i') }, { username: new RegExp(`^${username}$`, 'i') }] });
+
+    if (existingUser) {
+        // Provide more specific error message based on which field is duplicated
+        if (existingUser.email.toLowerCase() === email.toLowerCase()) {
+            return res.status(400).json({ message: 'Email already in use' });
+        }
+        if (existingUser.username.toLowerCase() === username.toLowerCase()) {
+             return res.status(400).json({ message: 'Username already taken' });
+        }
+        return res.status(400).json({ message: 'User already exists' }); // Fallback
+    }
+
 
     // Hash password
     const salt = await bcrypt.genSalt(10);
@@ -24,79 +40,89 @@ router.post('/signup', async (req, res) => {
     const user = new User({
       username,
       email,
-      password: hashedPassword
+      password: hashedPassword,
+       // Only set role if explicitly allowed and handled securely,
+       // otherwise default to 'user' in your User model schema
+       role: role || 'user' // Basic example - implement proper role handling
     });
 
     await user.save();
-    
+
     // Create token
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '24h'
+      expiresIn: '24h' // Token valid for 24 hours
     });
 
-    res.status(201).json({ token, user: { ...user.toObject(), password: undefined } });
+    // Return token and user data (excluding password)
+    res.status(201).json({ token, user: { _id: user._id, username: user.username, email: user.email, role: user.role, profilePicture: user.profilePicture } });
+
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error("Error during signup:", error.message);
+     // Handle potential database errors (e.g., validation errors not caught above)
+     if (error.name === 'ValidationError') {
+         return res.status(400).json({ message: error.message });
+     }
+    res.status(500).json({ message: 'Server Error during signup' });
   }
 });
 
 // --- User Login ---
+// POST /api/auth/login
 router.post('/login', async (req, res) => {
   try {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username });
-    if (!user) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+    const { email, password } = req.body; // Usually log in with email or username
+
+     // Simple validation
+    if (!email || !password) {
+        return res.status(400).json({ message: 'Please enter email and password' });
     }
 
+
+    // Find user by email (case-insensitive)
+    const user = await User.findOne({ email: new RegExp(`^${email}$`, 'i') });
+    if (!user) {
+      return res.status(401).json({ message: 'Invalid credentials' }); // Use generic message
+    }
+
+    // Compare password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+      return res.status(401).json({ message: 'Invalid credentials' }); // Use generic message
     }
 
+    // Create token
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '24h'
+      expiresIn: '24h' // Token valid for 24 hours
     });
 
-    res.json({ token, user: { ...user.toObject(), password: undefined } });
+    // Return token and user data (excluding password)
+    res.json({ token, user: { _id: user._id, username: user.username, email: user.email, role: user.role, profilePicture: user.profilePicture } });
+
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error("Error during login:", error.message);
+    res.status(500).json({ message: 'Server Error during login' });
   }
 });
 
-// --- (Optional but Recommended) Get Current User (using token) ---
-// Middleware to verify token (create a separate middleware file later)
-const authMiddleware = (req, res, next) => {
-    const token = req.header('x-auth-token'); // Or get from Authorization header
-    if (!token) {
-        return res.status(401).json({ message: 'No token, authorization denied' });
-    }
-    try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded.user; // Add user payload to request object
-        next();
-    } catch (err) {
-        res.status(401).json({ message: 'Token is not valid' });
-    }
-};
-
-router.get('/me', async (req, res) => {
+// --- Get Current User (Protected Route) ---
+// GET /api/auth/me
+// Uses the extracted auth middleware
+router.get('/me', auth, async (req, res) => {
   try {
-    const token = req.headers['x-auth-token'];
-    if (!token) {
-      return res.status(401).json({ message: 'No token provided' });
-    }
-
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await User.findById(decoded.userId).select('-password');
+    // The auth middleware has already verified the token and attached req.user.userId
+    const user = await User.findById(req.user.userId).select('-password'); // Find user by ID from token payload
     if (!user) {
+      // This case should ideally not happen if auth middleware found the user,
+      // but it's a safeguard if the user was deleted after token creation.
       return res.status(404).json({ message: 'User not found' });
     }
-
+    // Return user data (excluding password)
     res.json(user);
   } catch (error) {
-    res.status(401).json({ message: 'Invalid token' });
+    console.error("Error fetching current user ('/me'):", error.message);
+    res.status(500).json({ message: 'Server Error fetching current user' });
   }
 });
+
 
 module.exports = router;

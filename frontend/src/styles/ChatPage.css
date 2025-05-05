@@ -306,3 +306,109 @@
     background: var(--accent-hover);
   }
   
+
+  /* Add these styles to your ChatPage.css */
+
+/* --- Search Results List --- */
+.search-results-list {
+  flex: 1; /* Allows it to fill space like chat-list */
+  overflow-y: auto; /* Make results scrollable */
+  border-top: 1px solid #d1d1d6; /* Separator from search input */
+  /* Add padding if needed, but chat-item already has padding */
+}
+
+.search-result-item {
+  /* Inherits .chat-item styles (padding, cursor, hover effects, etc.) */
+  /* Add specific overrides if needed */
+  border-bottom: 1px solid #f2f2f7; /* Subtle separator between results */
+}
+
+.search-result-item:last-child {
+  border-bottom: none; /* No border for the last item */
+}
+
+
+/* State messages within search results or message area (e.g., "Searching...", "No users found.", "Loading messages...") */
+.search-state-message,
+.message-state-message {
+  padding: 12px 16px; /* Match chat-item padding */
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: var(--font-base);
+}
+
+.search-state-message.error,
+.message-state-message.error {
+  color: #d32f2f; /* Red color for errors */
+  /* Optional: background-color: #ffebee; */
+  /* Optional: border-radius: var(--radius-small); */
+  /* Optional: margin: 10px 16px; */
+}
+
+
+/* --- User Role Badges --- */
+.user-role-badge {
+  display: inline-block; /* Ensures it sits nicely next to name */
+  font-size: 0.75rem; /* Smaller font size */
+  font-weight: bold;
+  padding: 2px 6px; /* Small padding */
+  margin-left: 8px; /* Space from the name */
+  border-radius: var(--radius-small); /* Slightly rounded corners */
+  text-transform: uppercase; /* Make text uppercase */
+}
+
+/* Specific colors for different roles (adjust colors as needed) */
+.user-role-badge.user {
+  background-color: #e0e0e0; /* Light grey */
+  color: #424242; /* Dark grey text */
+}
+
+.user-role-badge.coach {
+  background-color: #c8e6c9; /* Light green */
+  color: #388e3c; /* Green text */
+}
+
+.user-role-badge.admin {
+  background-color: #ffccbc; /* Light orange/red */
+  color: #e64a19; /* Orange/red text */
+}
+
+/* --- Last Message Time (inside chat item) --- */
+.last-message-time {
+  font-size: var(--font-small); /* Match chat-last font size */
+  color: var(--text-secondary); /* Match chat-last color */
+  margin-left: auto; /* Push to the right */
+  flex-shrink: 0; /* Prevent it from shrinking */
+}
+
+/* --- Unread Indicator Dot --- */
+.unread-dot {
+  width: 8px; /* Smaller dot */
+  height: 8px; /* Smaller dot */
+  background-color: #ff2d55; /* Example: Red dot for unread */
+  border-radius: 50%;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+
+/* --- No Chat Selected State --- */
+.no-chat-selected {
+  /* Styles already added inline, but you could define them here */
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-secondary);
+  padding: 20px;
+  font-size: var(--font-base);
+}
+
+/* --- Page Container for Loading/Logged Out States --- */
+.chat-page-container {
+   /* Styles for the overall page wrapper when showing loading/not logged in states */
+   /* Useful if Navbar is outside .chat-page */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure it takes full viewport height */
+}
