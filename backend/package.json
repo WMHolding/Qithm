@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"  
   },
   "keywords": [],
   "author": "",
@@ -13,8 +14,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
-    "mongodb-memory-server": "^10.1.4",
     "mongoose": "^8.13.2",
     "socket.io": "^4.8.1"
+  },
+  "devDependencies": { 
+    "mongodb-memory-server": "^10.1.4"
   }
 }

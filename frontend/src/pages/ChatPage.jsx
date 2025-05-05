@@ -5,6 +5,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { chatApi } from '../services/chatApi';
 import '../styles/ChatPage.css'; // Make sure this path is correct
 import debounce from 'lodash.debounce'; // Install: npm install lodash.debounce
+import defaultAvatar from '../assets/default-avi.jpeg';
 
 
 // Helper function to format last message time (optional)
@@ -319,7 +320,7 @@ export default function ChatPage() {
       sender: { // Use current user info for optimistic rendering (needs _id, username, profilePicture)
         _id: currentUser._id,
         username: currentUser.username,
-        profilePicture: currentUser.profilePicture,
+        profilePicture: defaultAvatar,
          role: currentUser.role // Include role if you use it for message styling/info
       },
       message: messageText,
@@ -635,7 +636,7 @@ return (
                          onClick={() => handleSelectUser(user)} // Handle clicking on a user to open/create chat
                      >
                          {/* Display user's profile picture or a default placeholder */}
-                         <img src={user.profilePicture || 'https://via.placeholder.com/40'} alt={user.username} className="chat-avatar" />
+                         <img src={user.profilePicture || defaultAvatar} alt={user.username} className="chat-avatar" />
                          <div className="chat-info">
                              <div className="chat-name">
                                  {user.username}
@@ -689,7 +690,7 @@ return (
                       onClick={() => setActiveChatId(chat._id)}
                     >
                       {/* Display other user's avatar or a default placeholder */}
-                      <img src={otherUser?.profilePicture || 'https://via.placeholder.com/40'} alt={otherUser?.username || 'User'} className="chat-avatar" />
+                      <img src={otherUser?.profilePicture || defaultAvatar} alt={otherUser?.username || 'User'} className="chat-avatar" />
                       <div className="chat-info">
                         {/* Display other user's username */}
                         <div className="chat-name">
@@ -734,11 +735,8 @@ return (
             {/* Chat Header */}
             <header className="chat-header">
               {/* Display other participant's info */}
-              <img
-                src={otherParticipant?.profilePicture || 'https://via.placeholder.com/48'}
-                alt={otherParticipant?.username || 'User'}
-                className="chat-window-avatar"
-              />
+              <img src={otherParticipant?.profilePicture || defaultAvatar} alt={otherParticipant?.username || 'User'} className="chat-avatar" />
+
               <div className="chat-window-info">
                 <div className="chat-window-name">
                   {otherParticipant?.username || 'Unknown User'}
@@ -819,3 +817,4 @@ return (
   </div>
 );
 }
+

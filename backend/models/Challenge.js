@@ -14,7 +14,7 @@ const challengeSchema = new mongoose.Schema({
   difficulty: { 
     type: String, 
     required: true,
-    enum: ['beginner', 'intermediate', 'advanced']
+    enum: ['beginner', 'intermediate', 'advanced', 'medium']
   },
   image: { type: String },
 

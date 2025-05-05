@@ -1,17 +1,44 @@
+// src/components/LiftSideDash.jsx
 import React from 'react';
-import ProfilePic from "../assets/istockphoto-1309328823-612x612.jpg";
-import "../styles/LiftSideDash.css";
+import { useAuth } from '../contexts/AuthContext'; // Import useAuth
+// No need to import ProfilePic directly if using user's profilePicture URL
+// import ProfilePic from "../assets/istockphoto-1309328823-612x612.jpg";
+import "../styles/LiftSideDash.css"; // Ensure correct path
 
-function ProfileBox({ profile }) {
+// ProfileBox component updated to receive user data as props
+function ProfileBox({ user }) {
+    // Ensure user object is available before trying to access properties
+    if (!user) {
+        return (
+            <div className="profile-box">
+                 <div className="profile-pic-placeholder"></div> {/* Placeholder or loading spinner */}
+                <h2>Loading User...</h2>
+                <p></p>
+            </div>
+        );
+    }
+
     return (
         <div className="profile-box">
-            <img src={profile.image} alt="Profile" className="profile-pic" />
-            <h2>{profile.name}</h2>
-            <p>{profile.rank}</p>
+            {/* Use the user's profile picture URL from the user object */}
+            {/* Provide an alt text and a fallback src in case profilePicture is missing */}
+            <img
+                src={user.profilePicture || 'https://via.placeholder.com/150?text=User'} // Use user.profilePicture, fallback to placeholder
+                alt={`${user.username}'s profile`}
+                className="profile-pic"
+            />
+            {/* Display username */}
+            <h2>{user.username}</h2>
+            {/* Display user's points (assuming points is available on the user object) */}
+            {/* You might calculate or fetch rank separately for a true ranking */}
+            <p>Points: {user.points || 0}</p> {/* Display points or 0 if not available */}
+             {/* Optional: Display role */}
+             {user.role && <p>Role: {user.role}</p>}
         </div>
     );
 }
 
+// TrackProgress component remains hardcoded for now
 function TrackProgress() {
     return (
         <div className="track-progress">
@@ -31,26 +58,46 @@ function TrackProgress() {
                 </div>
             </div>
 
+            {/* Add more hardcoded challenges or integrate dynamic data here later */}
 
         </div>
     );
 }
 
-const profile = {
-    name: "John Doe",
-    rank: "1763",
-    image: ProfilePic,
-};
 
+// LiftSideDash component uses useAuth and passes user to ProfileBox
 function LiftSideDash() {
+    const { currentUser, loadingAuth } = useAuth(); // Get current user and auth loading state
+
+    // You might want to show a loading state if auth is still loading
+    if (loadingAuth) {
+        return (
+            <div className="lift-side-dash">
+                <div>Loading sidebar...</div>
+            </div>
+        );
+    }
+
+    // If auth is loaded but no current user, show a message or redirect (Dashboard already handles this)
+    // if (!currentUser) {
+    //     return (
+    //         <div className="lift-side-dash">
+    //             <div>Please log in to see your dashboard.</div>
+    //         </div>
+    //     );
+    // }
+
+
     return (
         <div className="lift-side-dash">
-            <ProfileBox profile={profile} />
-            <TrackProgress />
+            {/* Pass the currentUser object to ProfileBox */}
+            <ProfileBox user={currentUser} />
+            <TrackProgress /> {/* Keep TrackProgress hardcoded for now */}
         </div>
     )
-
 }
 
-// Export components individually
+// Export components
 export default LiftSideDash;
+// If you export ProfileBox or TrackProgress for other uses, export them here too
+// export { ProfileBox, TrackProgress };
