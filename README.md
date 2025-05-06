@@ -1,5 +1,11 @@
 # Qithm - Fitness Challenge Platform
 
+## Website Link
+```
+"http://qithm.onrender.com"
+```
+
+
 ## Project Structure
 ```
 Qithm/
@@ -54,7 +60,6 @@ npm install
 MONGODB_URI="mongodb+srv://abdulrahmanalzamil10:LZffacijWLFDNf9O@cluster0.jqvepkn.mongodb.net/Qithm?retryWrites=true&w=majority&appName=Cluster0"
 PORT=3000
 JWT_SECRET="=[-lp0ug7yf6t34r6p['[';p0de/\]'.-[;d/=]\'.-[;0p,lm9okn8ibuh6vyg5ctf]]]"
-FRONTEND_URL="https://qithm.vercel.app"
 ```
 
 4. Start the server
