@@ -1,59 +1,132 @@
-# Qithm
+# Qithm - Fitness Challenge Platform
 
-> Front‑end prototype of the Qithm fitness challenges platform.
-
-This repository contains the **front‑end** prototype for Qithm. It showcases key pages and layouts without a backing API or database connection.
-
----
-
-## 📁 Repository Structure
-
+## Project Structure
 ```
-qithm/                # root of the project
-├── front-end/         # React app (prototype)
-│   ├── public/        # static assets
-│   ├── src/           # React source code
-│   └── package.json   # front‑end dependencies & scripts
-└── README.md          # this file
+Qithm/
+├── backend/
+│   ├── config/
+│   │   └── db.js
+│   ├── controllers/
+│   │   └── championshipController/
+│   ├── middleware/
+│   │   └── authMiddleware.js
+│   ├── models/
+│   │   ├── Challenge.js
+│   │   ├── Championship.js
+│   │   ├── PrivateChat.js
+│   │   └── User.js
+│   ├── routes/
+│   │   ├── api.js
+│   │   ├── authRoutes.js
+│   │   ├── challenges.js
+│   │   └── championships.js
+│   ├── index.js
+│   ├── socket.js
+│   └── package.json
+└── frontend/
+    ├── public/
+    ├── src/
+    │   ├── assets/
+    │   ├── components/
+    │   ├── contexts/
+    │   ├── pages/
+    │   ├── services/
+    │   └── styles/
+    ├── index.html
+    └── package.json
 ```
 
+## Setup Instructions
 
----
+### Backend Setup
+1. Navigate to backend directory
+```bash
+cd backend
+```
 
-## 🚀 Getting Started
+2. Install dependencies
+```bash
+npm install
+```
 
-### Prerequisites
+3. Create .env file with required environment variables
+```env
+MONGODB_URI="mongodb+srv://abdulrahmanalzamil10:LZffacijWLFDNf9O@cluster0.jqvepkn.mongodb.net/Qithm?retryWrites=true&w=majority&appName=Cluster0"
+PORT=3000
+JWT_SECRET="=[-lp0ug7yf6t34r6p['[';p0de/\]'.-[;d/=]\'.-[;0p,lm9okn8ibuh6vyg5ctf]]]"
+FRONTEND_URL="https://qithm.vercel.app"
+```
 
-- [Node.js](https://nodejs.org/) (v14 or higher)
-- [npm](https://www.npmjs.com/)
+4. Start the server
+```bash
+npm start
+```
 
-### Installation & Run
+### Frontend Setup
+1. Navigate to frontend directory
+```bash
+cd frontend
+```
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/WMHolding/Qithm.git
-   ```
-2. **Enter the project folder**
-   ```bash
-   cd Qithm
-   ```
-3. **Navigate into the front‑end**
-   ```bash
-   cd front-end
-   ```
-4. **Install dependencies**
-   ```bash
-   npm install
-   ```
-5. **Start the development server**
-   ```bash
-   npm run dev
-   ```
+2. Install dependencies
+```bash
+npm install
+```
 
-   By default, the React app will be available at:
-   ```
-   http://localhost:5137
-   ```
+3. Start development server
+```bash
+npm run dev
+```
+
+## Technologies Used
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB with Mongoose
+- Socket.IO for real-time chat
+- JWT Authentication
+
+### Frontend
+- React
+- Vite
+- React Router DOM
+- Socket.IO Client
+
+## Features
+- User Authentication
+- Fitness Challenges
+- Championships
+- Real-time Chat
+- Progress Tracking
+- Leaderboard System
+
+## API Endpoints
+
+### Authentication
+- POST `/api/auth/signup` - Register
+- POST `/api/auth/login` - Login
+
+### Challenges
+- GET `/api/challenges` - Get all challenges
+- POST `/api/challenges/enroll` - Enroll in challenge
+
+### Championships
+- GET `/api/championships` - Get championships
+- POST `/api/championships/enroll` - Enroll in championship
+
+### Profile
+- GET `/api/profile/:userId` - Get profile
+- PUT `/api/profile/:userId` - Update profile
+
+
+
+## Developers
+- Abdullah Alhydary
+- Abdulrahman Alzamil
+- Basim Alasmari
+- Abdulaziz Alharthi
+- Mohammed Aldahash
 
 ---
 
