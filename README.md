@@ -1,10 +1,7 @@
 # Qithm - Fitness Challenge Platform
 
-## Website Link
-```
-"http://qithm.onrender.com"
-```
-
+## Website
+🌐 **Live Demo**: [http://qithm.onrender.com](http://qithm.onrender.com)
 
 ## Project Structure
 ```
